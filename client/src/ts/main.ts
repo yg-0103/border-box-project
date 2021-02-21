@@ -3,15 +3,15 @@ import axios from 'axios';
 const container = document.querySelector('.container') as HTMLElement;
 
 interface Movies {
-  boxOfficeMovie?: [];
-  movieNameAndRank?: [];
+  boxOfficeMovie: [];
+  movieNameAndRank: [];
 }
 
-let movies: Movies = {};
-let isLoading = false;
+let movies: Movies;
+const isLoading = false;
 
 const render = ({ boxOfficeMovie }: Movies) => {
-  container.innerHTML = (boxOfficeMovie as [])
+  container.innerHTML = boxOfficeMovie
     .map(({ title, image }) => `<div>${title}</div> <img src="${image}"/>`)
     .join('');
 };
