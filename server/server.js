@@ -16,6 +16,7 @@ app.get('/movielist/:today', async (req, res) => {
 
   res.send(movieList);
 });
+
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
