@@ -20,13 +20,48 @@
             <p class="movie-title">백 투 더 퓨처</p>
             <p class="movie-director">로버트 저메키스 감독</p>
             <button class="movie-details">상세정보</button>
-            <button class="reservation">예매하기</button>
+            <button class="booking-btn">예매하기</button>
           </li>
         </ul>
         <button class="carousel-control prex">&laquo;</button>
         <button class="carousel-contron next">&raquo;</button> -->
       </div>
     </section>
+    <!-- modal section for booking and ticket -->
+    <div class="modal-section">
+      <!-- reservation section  -->
+      <div class="reservation-container modal">
+        <section>
+          <h3 class="reservation_movie-title">콜 미 바이 유어 네임</h3>
+          <img src="" alt="">
+          <!-- 캘린더....  -->
+          <div class="reservation_time-table">
+            <input type="radio" name="time-table" class="radio_time-table">A Time (10:00 - 13:00)
+            <input type="radio" name="time-table" class="radio_time-table">B Time (14:00 - 17:00)
+            <input type="radio" name="time-table" class="radio_time-table">C Time (18:00 - 21:00)
+          </div>
+          <div class="reservation_price">최종 결제 금액
+            <span>32,000</span>원
+          </div>
+          <button type="submit" class="reservation-completed" title="예매하기">예약</button>
+          <button type="button" class="reservation-cancel" title="예매 취소">취소</button>
+          <button type="button" class="reservation-close" title="예매 페이지 나가기"></button>
+        </section>
+        <!-- completed reservation section  -->
+        <section>
+          <h3 class="completed_movie-title">콜 미 바이 유어 네임</h3>
+          <div class="completed_reservation-number">예약 번호<span class="reservation-number">20210222-ABCD</span></div>
+          <img src="" alt="">
+          <div class="completed_reservation-details">
+            <p class="completed_reservation-date">2021-02-22 (MON)</p>
+            <p class="completed_reservation-time">A (10:00 - 14:00)</p>
+          </div>
+          <div class="completed_barcode">BORDER BOX
+            <img src="" alt="바코드">
+          </div>
+        </section>
+      </div>
+    </div>
     <!-- borderbox introduction  -->
     <section class="introduction">
       <h2>ESPECIALLY FOR YOU</h2>
