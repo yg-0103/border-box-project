@@ -104,3 +104,5 @@ dist
 .tern-port
 
 /client/public
+
+.DS_Store
