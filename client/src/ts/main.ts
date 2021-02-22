@@ -1,4 +1,4 @@
-import axios from 'axios';
+import calender from './calender';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
@@ -22,3 +22,4 @@ $prevBtn.onclick = () => {
   currentSlide += 1;
   
 }
+calender();
