@@ -24,6 +24,13 @@ app.get('/movielist/:today', async (req, res) => {
   res.send(movieList.slice(0, 10));
 });
 
+app.post('/reserve', (req, res) => {
+  console.log(req.body);
+  reserveInformation = [...reserveInformation, req.body];
+
+  res.send(reserveInformation);
+});
+
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });
