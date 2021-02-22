@@ -1,0 +1,59 @@
+.footer {
+  height: 270px;
+  background-color: $color-black;
+  opacity: 0.95;
+  color: $color-white;
+  padding: 40px;
+
+  .footer_logo {
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+
+    img {
+      width: 260px;
+    }
+  } 
+
+  .footer_copyright {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .footer_github {
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 450px;
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      width: 100px;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    span {
+      color: $color-gray;
+      display: block;
+      background-color: rgba(221, 221, 221, 0.1);
+      line-height: 25px;
+      border-radius: 3px;
+      margin-top: 10px;
+    }
+  }
+}
+
+.gototop {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+}

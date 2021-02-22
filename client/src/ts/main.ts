@@ -1,38 +1,24 @@
 import axios from 'axios';
 
-const container = document.querySelector('.container') as HTMLElement;
+const todayYear = new Date().getFullYear();
+const todayMonth = new Date().getMonth() + 1;
+const todayDate = new Date().getDate();
 
-interface Movies {
-  boxOfficeMovie: [];
-  movieNameAndRank: [];
+const today = `${todayYear}${("0" + todayMonth).slice(-2)}${("0" + (todayDate-1)).slice(-2)}`
+// console.log(today);
+
+// const getMovieList = async () => {
+//   const movieList = await axios.get(`/movielist/${today}`);
+//   console.log(movieList.data);
+// };
+// getMovieList();
+
+let currentSlide = 1;
+
+const $prevBtn = document.querySelector('.prev');
+const $nextBtn = document.querySelector('.next');
+
+$prevBtn.onclick = () => {
+  currentSlide += 1;
+  
 }
-
-let movies: Movies;
-const isLoading = false;
-
-const render = ({ boxOfficeMovie }: Movies) => {
-  container.innerHTML = boxOfficeMovie
-    .map(({ title, image }) => `<div>${title}</div> <img src="${image}"/>`)
-    .join('');
-};
-
-const getMovies = async (date: string) => {
-  try {
-    const moviesData = await axios.get(`/movielist/${date}`);
-    movies = moviesData.data;
-    console.log(movies);
-  } catch (e) {
-    throw new Error('get moives failed');
-  }
-};
-
-window.addEventListener('load', () => {
-  const date = new Date();
-  getMovies(
-    `${date.getFullYear()}${
-      date.getMonth() + 1 < 10
-        ? '0' + (date.getMonth() + 1)
-        : date.getMonth() + 1
-    }${date.getDate() - 1}`
-  );
-});
