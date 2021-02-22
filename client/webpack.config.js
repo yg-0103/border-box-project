@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'js/bundle.js',
+    publicPath: '../',
   },
   plugins: [
     // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
@@ -27,6 +28,13 @@ module.exports = {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: [
+          'file-loader?name=img/[name].[ext]?[hash]',
+          'image-webpack-loader',
+        ],
       },
     ],
   },

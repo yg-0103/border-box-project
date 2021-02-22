@@ -19,11 +19,11 @@ const getNaverMovies = async (serchWord) => {
   try {
     const {
       data: { items: movies },
-    } = await ajaxNaverMovie.get(encodeURI(`${serchWord}&display=5`));
+    } = await ajaxNaverMovie.get(encodeURI(`${serchWord}&display=3`));
 
     return movies;
   } catch (e) {
-    throw new Error('get naver moive failed');
+    throw new Error('failed: get naver moive');
   }
 };
 
@@ -55,7 +55,7 @@ const getBoxOfficeMovies = async (today) => {
       movieNameAndRank,
     };
   } catch (e) {
-    throw new Error('get box office movie failed');
+    throw new Error('failed: get box office movie');
   }
 };
 

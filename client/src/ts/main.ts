@@ -16,16 +16,23 @@ const render = ({ boxOfficeMovie }: Movies) => {
     .join('');
 };
 
-const getMovies = async () => {
+const getMovies = async (date: string) => {
   try {
-    container.innerHTML = 'loading......';
-
-    const moviesData = await axios.get(`/movielist/20210211`);
+    const moviesData = await axios.get(`/movielist/${date}`);
     movies = moviesData.data;
-    render(movies);
+    console.log(movies);
   } catch (e) {
     throw new Error('get moives failed');
   }
 };
 
-window.addEventListener('load', getMovies);
+window.addEventListener('load', () => {
+  const date = new Date();
+  getMovies(
+    `${date.getFullYear()}${
+      date.getMonth() + 1 < 10
+        ? '0' + (date.getMonth() + 1)
+        : date.getMonth() + 1
+    }${date.getDate() - 1}`
+  );
+});

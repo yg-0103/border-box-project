@@ -12,9 +12,16 @@ let reserveInformation = [];
 
 app.get('/movielist/:today', async (req, res) => {
   console.log(req.params);
-  movieList = await apis.getBoxOfficeMovies(req.params.today);
+  const { movieNameAndRank, boxOfficeMovie } = await apis.getBoxOfficeMovies(
+    req.params.today
+  );
 
-  res.send(movieList);
+  movieList = boxOfficeMovie.map((movie, i) => ({
+    ...movie,
+    ...movieNameAndRank[i],
+  }));
+
+  res.send(movieList.slice(0, 10));
 });
 
 app.listen(3000, () => {
