@@ -1,5 +1,5 @@
-import calender from './reservation';
+import reservation from './reservationEventHandle';
 import myBooking from './myBooking';
 
-calender();
+reservation();
 myBooking();
