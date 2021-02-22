@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { reserveData } from './model';
+import renderCompleted from './completed';
 
 export default () => {
   const $calenderContainer = document.querySelector(
@@ -31,7 +32,7 @@ const state: State = {
   today: '',
   date: 0,
   active: false,
-  time: ''
+  time: 'A Time (10:00 - 13:00)'
 };
 
 const setDays = ((): (() => void) => {
@@ -179,7 +180,8 @@ $reserveBtnGroup.addEventListener('click', e => {
     reserveData.movieTitle = (document.querySelector('.reservation_movie-title') as HTMLElement).textContent;
     reserveData.reserveDate = state.today;
     reserveData.reserveTime = state.time;
-    console.log(reserveData);
+    renderCompleted(reserveData);
+    (document.querySelector('.completed') as HTMLElement).style.display = 'flex';
   }
 
   (document.querySelector('.reservation-container') as HTMLElement).style.display = 'none';
