@@ -9,7 +9,7 @@ export interface ReserveData {
   movieImg: string;
   movieTitle: string | null;
   reserveTime: string | null;
-  reserveDate: string
+  reserveDate: string;
 }
 
 export interface State {
@@ -27,7 +27,7 @@ export const reserveData: ReserveData = {
   movieImg: '',
   movieTitle: '',
   reserveDate: '',
-  reserveTime: ''
+  reserveTime: '',
 };
 
 export const state: State = {

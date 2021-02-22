@@ -7,11 +7,17 @@ const $btnNext = document.querySelector('.btn-next') as HTMLButtonElement;
 const $btnPrev = document.querySelector('.btn-prev') as HTMLButtonElement;
 const $radioSection = document.querySelector('.radio-section') as HTMLElement;
 const $reserveBtnGroup = document.querySelector('.btn-group') as HTMLElement;
-const $calendarContainer = document.querySelector('.main-container') as HTMLElement;
+const $calendarContainer = document.querySelector(
+  '.main-container'
+) as HTMLElement;
 
 const setReserveInfo = (): void => {
-  reserveData.movieImg = (document.querySelector('.img-container img') as HTMLImageElement).src;
-  reserveData.movieTitle = (document.querySelector('.reservation_movie-title') as HTMLElement).textContent;
+  reserveData.movieImg = (document.querySelector(
+    '.img-container img'
+  ) as HTMLImageElement).src;
+  reserveData.movieTitle = (document.querySelector(
+    '.reservation_movie-title'
+  ) as HTMLElement).textContent;
   reserveData.reserveDate = state.today;
   reserveData.reserveTime = state.time;
 };
@@ -59,7 +65,9 @@ export default () => {
     $radioSection.querySelector('.active')?.classList.remove('active');
     eventTarget.closest('.radio-container')?.classList.add('active');
 
-    state.time = $radioSection.querySelector('.active')?.textContent?.trim() as StateTime;
+    state.time = $radioSection
+      .querySelector('.active')
+      ?.textContent?.trim() as StateTime;
     console.log(state.time);
   });
 
@@ -69,9 +77,13 @@ export default () => {
     if (eventTarget.matches('.reservation-completed')) {
       setReserveInfo();
       renderCompleted(reserveData);
-      (document.querySelector('.completed') as HTMLElement).style.display = 'flex';
+      (document.querySelector('.completed') as HTMLElement).classList.add(
+        'active'
+      );
     }
 
-    (document.querySelector('.reservation-container') as HTMLElement).style.display = 'none';
+    (document.querySelector(
+      '.reservation-container'
+    ) as HTMLElement).style.display = 'none';
   });
 };

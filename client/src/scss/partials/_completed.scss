@@ -1,5 +1,4 @@
 .completed {
-  pointer-events: none;
   border-radius: 10px;
   width: 560px;
   height: 800px;
@@ -7,7 +6,7 @@
   z-index: 100;
   @include background-modal;
   @include box-shadow(10px, 0.8);
-  @include position-center(absolute);
+  @include position-center(fixed);
   @include flex-center;
   flex-flow: column nowrap;
   display: none;
@@ -65,10 +64,18 @@
     }
   }
 
-  &_overlay {
+  ~.completed_overlay {
     display: none;
     @include position(fixed, 0, 0, 0, 0);
     background-color: rgba($color: #000000, $alpha: 0.8);
     z-index: 99;
+  }
+
+  &.active {
+    display: flex;
+
+    ~.completed_overlay {
+      display: flex;
+    }
   }
 }
