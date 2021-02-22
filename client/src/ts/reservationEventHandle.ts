@@ -1,7 +1,7 @@
 import { reserveData, state, StateTime } from './model';
 import renderCompleted from './completed';
-import { calendarRender } from './calendar/calenderRender';
-import { setStateMonthAndDate, setStateMonthAndYear } from './calendar/setCalederState';
+import { calendarRender } from './calendar/calendarRender';
+import { setStateMonthAndDate, setStateMonthAndYear } from './calendar/setCaledarState';
 
 const $btnNext = document.querySelector('.btn-next') as HTMLButtonElement;
 const $btnPrev = document.querySelector('.btn-prev') as HTMLButtonElement;
@@ -16,9 +16,9 @@ const setReserveInfo = (): void => {
   reserveData.reserveTime = state.time;
 };
 
-const setBtnDisplay = (prevBtn: string, nextBtn: string): void => {
-  $btnNext.style.display = nextBtn;
-  $btnPrev.style.display = prevBtn;
+const setBtnDisplay = (btnPrev: string, btnNext: string): void => {
+  $btnNext.style.display = btnNext;
+  $btnPrev.style.display = btnPrev;
 };
 
 const prevAndNextCalendarHandle = (e: Event): void => {
@@ -47,8 +47,8 @@ export default () => {
 
   $calendarContainer.addEventListener('click', e => {
     const eventTarget = e.target as HTMLElement;
-    if (!eventTarget.matches('button')) return;
 
+    if (!eventTarget.matches('button')) return;
     state.today = `${state.year}-${state.month + 1}-${eventTarget.id}`;
     calendarRender();
   });

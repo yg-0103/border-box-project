@@ -27,6 +27,6 @@ export const calendarRender = (): void => {
       )
       .join('')
     + state.nextMonthDays
-      .map(day => `<button id="${day}" class="next-month" style="opacity: 0; position: relative; z-index: -10;">${day}</button>`)
+      .map(day => `<button id="${day}" style="opacity: 0; position: relative; z-index: -10;">${day}</button>`)
       .join('');
 };
