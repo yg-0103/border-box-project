@@ -10,7 +10,8 @@
   @include position-center(absolute);
   @include flex-center;
   flex-flow: column nowrap;
-  // display: none;
+  display: none;
+
   &_movie-title {
     width: 480px;
     @include font(36px, bold);
@@ -19,42 +20,51 @@
     border-bottom: 3px solid #000;
     padding: 20px;
   }
+
   &_reservation-number {
     margin-top: 14px;
     font-size: 18px;
+
     .reservation-number {
       @include font(30px, bold);
       display: block;
       margin-top: 2px;
     }
   }
+
   &_image {
     margin-top: 16px;
     width: 220px;
     height: 320px;
     @include box-shadow;
   }
+
   &_reservation-details {
     margin-top: 14px;
+
     &_date {
       font-size: 20px;
     }
+
     &_time {
       margin-top: 8px;
       font-size: 20px;
     }
   }
+
   &_qrcode {
     @include font(18px, bold);
     @include flex-center;
     flex-flow: column nowrap;
     margin-top: 30px;
+
     &_image {
       width: 120px;
       height: 120px;
       margin-top: 4px;
     }
   }
+
   &_overlay {
     display: none;
     @include position(fixed, 0, 0, 0, 0);

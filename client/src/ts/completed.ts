@@ -1,9 +1,11 @@
-interface ReserveData {
-  movieImg: string;
-  movieTitle: string;
-  reserveDate: string;
-  reserveTime: string;
-}
+import { ReserveData } from './model';
+
+// interface ReserveData {
+//   movieImg: string;
+//   movieTitle: string;
+//   reserveDate: string;
+//   reserveTime: string;
+// }
 
 const renderCompleted = ({
   movieImg,
@@ -15,8 +17,7 @@ const renderCompleted = ({
     new Date(reserveDate).getDay()
   ];
 
-  const reserveNumber =
-    reserveDate.replace('/-/g', '') + reserveTime.slice(0, 1);
+  const reserveNumber = reserveDate.replace('/-/g', '') + (reserveTime as string).slice(0, 1);
 
   const qrData = `
     예약 번호: ${reserveNumber} /
