@@ -1,36 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
-  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./public/css/style.css" />
-  <script defer src="./public/js/bundle.js"></script>
-  <title>BorderBox</title>
-</head>
-
-<body>
-  <!-- header -->
-  <header class="header">
-    <h1 class="header_headline">
-      <img src="./src/img/logo__heading.png" alt="" /><span>PRIVATE THEATER</span>
-    </h1>
-  </header>
-  <!-- box-office -->
-  <section class="boxoffice-container">
-    <h2 class="boxoffice_headline">박스 오피스</h2>
-    <div class="boxoffice_carousel">
-      <!-- <ul class="boxoffice_list">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./public/css/style.css" />
+    <script defer src="./public/js/bundle.js"></script>
+    <title>BorderBox</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header">
+      <h1 class="header_headline">
+        <img src="./src/img/logo__heading.png" alt="borderbox" /><span>PRIVATE THEATER</span>
+      </h1>
+    </header>
+    <!-- box-office -->
+    <section class="boxoffice-container">
+      <h2 class="boxoffice_headline aria-hidden">박스 오피스</h2>
+      <div class="boxoffice_carousel">
+        <ul class="boxoffice_list">
           <li>
             <img src="" alt="">
-            <p class="movie-title">백 투 더 퓨처</p>
-            <p class="movie-director">로버트 저메키스 감독</p>
+            <div class="movie-info">
+              <p class="movie-title">백 투 더 퓨처</p>
+              <p class="movie-director">로버트 저메키스 감독</p>
+            </div>
+            <button class="movie-details">상세정보</button>
+            <button class="booking-btn">예매하기</button>
+          </li>
+          <li class="active">
+            <img src="" alt="">
+            <div class="movie-info">
+              <p class="movie-title">백 투 더 퓨처</p>
+              <p class="movie-director">로버트 저메키스 감독</p>
+            </div>
+            <button class="movie-details">상세정보</button>
+            <button class="booking-btn">예매하기</button>
+          </li>
+          <li>
+            <img src="" alt="">
+            <div class="movie-info">
+              <p class="movie-title">백 투 더 퓨처</p>
+              <p class="movie-director">로버트 저메키스 감독</p>
+            </div>
+            <button class="movie-details">상세정보</button>
+            <button class="booking-btn">예매하기</button>
+          </li>
+          <li>
+            <img src="" alt="">
+            <div class="movie-info">
+              <p class="movie-title">백 투 더 퓨처</p>
+              <p class="movie-director">로버트 저메키스 감독</p>
+            </div>
+            <button class="movie-details">상세정보</button>
+            <button class="booking-btn">예매하기</button>
+          </li>
+          <li>
+            <img src="" alt="">
+            <div class="movie-info">
+              <p class="movie-title">백 투 더 퓨처</p>
+              <p class="movie-director">로버트 저메키스 감독</p>
+            </div>
+            <button class="movie-details">상세정보</button>
+            <button class="booking-btn">예매하기</button>
+          </li>
+          <li>
+            <img src="" alt="">
+            <div class="movie-info">
+              <p class="movie-title">백 투 더 퓨처</p>
+              <p class="movie-director">로버트 저메키스 감독</p>
+            </div>
             <button class="movie-details">상세정보</button>
             <button class="booking-btn">예매하기</button>
           </li>
         </ul>
+
+
         <button class="carousel-control prex">&laquo;</button>
         <button class="carousel-contron next">&raquo;</button> -->
     </div>
@@ -114,46 +161,60 @@
       </div>
     </section>
   </div>
-  <!-- borderbox introduction  -->
-  <section class="introduction">
-    <h2>ESPECIALLY FOR YOU</h2>
-    <figure>
-      <img src="" alt="" />
-      <figcaption>
-        PRIVATE MOVIE FOR SPECIAL MEMORIES
-        <span>소중한 사람과 특별한 날을 기념할 수 있는 프라이빗한 경험을
-          보더박스가 선사합니다.</span>
-      </figcaption>
-    </figure>
-    <figure>
-      <img src="" alt="" />
-      <figcaption>
-        EXPERIENCE PRIMIUM
-        <span>보더박스는 몰입감을 즐길 수 있는 Tilting Screen과 Flexound 오디오
-          시스템 그리고 최고급 가죽시트 좌석 등 세계 최고 수준의 프리미엄
-          설비를 갖추고 있습니다.</span>
-      </figcaption>
-    </figure>
-  </section>
-  <!-- footer -->
-  <footer class="footer">
-    <div class="footer_logo">
-      <small class="footer_copyright">No copyright because it is just a fake version of Megabox</small>
-    </div>
-    <ul class="footer_github">
-      <li>
-        <a href="https://github.com/yg-0103"><img src="" alt="" />&copy;yg-0103</a>
-      </li>
-      <li>
-        <a href="https://github.com/wisemett"><img src="" alt="" />&copy;wisemett</a>
-      </li>
-      <li>
-        <a href="https://github.com/margu31"><img src="" alt="" />&copy;margu31</a>
-      </li>
-    </ul>
-  </footer>
-  <!-- 상단 이동 -->
-  <a href="" class="gototop" aria-label="상단 이동"></a>
-</body>
 
+    <!-- borderbox introduction  -->
+    <section class="introduction">
+      <h2>ESPECIALLY FOR YOU</h2>
+      <div class="introduction_image-container">
+        <figure>
+          <img src="./src/img/theater-top.jpg" alt="private theater" class="private-img"/>
+          <figcaption class="private-text">
+            PRIVATE MOVIE for Special Memories
+            <span>소중한 사람과 특별한 날을 기념할 수 있는 프라이빗한 경험을
+              보더박스가 선사합니다.</span>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="./src/img/theater-bottom.png" alt="EXPERIENCE PRIMIUM" class="premium-img"/>
+          <figcaption class="premium-text">
+            EXPERIENCE PREMIUM
+            <span>보더박스는 몰입감을 즐길 수 있는 Tilting Screen과 Flexound 오디오
+              시스템 그리고 최고급 가죽시트 좌석 등 세계 최고 수준의 프리미엄
+              설비를 갖추고 있습니다.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer class="footer">
+      <div class="footer_logo">
+        <img src="./src/img/logo__heading.png" alt="borderbox">
+        <small class="footer_copyright"
+          >No copyright because it is just a fake version of Megabox</small
+        >
+      </div>
+      <ul class="footer_github">
+        <li>
+          <a href="https://github.com/yg-0103"
+            ><img src="./src/img/github.svg" alt="" /><span>@yg-0103</span></a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/wisemett"
+            ><img src="./src/img/github.svg" alt="" /><span>@wisemett</span></a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/margu31"
+            ><img src="./src/img/github.svg" alt="" /><span>@margu31</span></a
+          >
+        </li>
+      </ul>
+    </footer>
+    <!-- 상단 이동 -->
+    <a href="" class="gototop" aria-label="상단 이동"><img src="./src/img/btn-gototop.png" alt="상단이동"></a>
+  </body>
 </html>
+
+  
+
