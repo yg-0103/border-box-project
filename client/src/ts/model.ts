@@ -1,3 +1,10 @@
+/* eslint-disable no-unused-vars */
+export enum StateTime {
+  A = 'A Time (10:00 - 13:00)',
+  B = 'B Time (14:00 - 17:00)',
+  C = 'C Time (18:00 - 21:00)'
+}
+
 export interface ReserveData {
   movieImg: string;
   movieTitle: string | null;
@@ -13,8 +20,7 @@ export interface State {
   month: number;
   today: string;
   date: number;
-  active: boolean;
-  time: string;
+  time: StateTime
 }
 
 export const reserveData: ReserveData = {
@@ -30,8 +36,7 @@ export const state: State = {
   nextMonthDays: [],
   year: 0,
   month: 0,
-  today: '',
   date: 0,
-  active: false,
-  time: 'A Time (10:00 - 13:00)'
+  today: '',
+  time: StateTime.A
 };

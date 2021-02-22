@@ -1,4 +1,4 @@
-import { reserveData, state } from './model';
+import { reserveData, state, StateTime } from './model';
 import renderCompleted from './completed';
 import { calendarRender } from './calendar/calenderRender';
 import { setStateMonthAndDate, setStateMonthAndYear } from './calendar/setCalederState';
@@ -21,8 +21,8 @@ const setBtnDisplay = (prevBtn: string, nextBtn: string): void => {
   $btnPrev.style.display = prevBtn;
 };
 
-const prevAndNextCalendarHandle = (e: Event) => {
-  const eventTarget = <HTMLElement>e.target;
+const prevAndNextCalendarHandle = (e: Event): void => {
+  const eventTarget = e.target as HTMLElement;
 
   if (eventTarget.closest('.btn-next')) {
     setStateMonthAndDate(1, 0);
@@ -46,7 +46,7 @@ export default () => {
   $btnPrev.addEventListener('click', prevAndNextCalendarHandle);
 
   $calendarContainer.addEventListener('click', e => {
-    const eventTarget = <HTMLElement>e.target;
+    const eventTarget = e.target as HTMLElement;
     if (!eventTarget.matches('button')) return;
 
     state.today = `${state.year}-${state.month + 1}-${eventTarget.id}`;
@@ -54,16 +54,17 @@ export default () => {
   });
 
   $radioSection.addEventListener('change', e => {
-    const eventTarget = <HTMLElement>e.target;
+    const eventTarget = e.target as HTMLElement;
 
-    ($radioSection.querySelector('.active') as HTMLElement).classList.remove('active');
-    (eventTarget.closest('.radio-container') as HTMLElement).classList.add('active');
+    $radioSection.querySelector('.active')?.classList.remove('active');
+    eventTarget.closest('.radio-container')?.classList.add('active');
 
-    state.time = (($radioSection.querySelector('.active') as HTMLElement).textContent as string).trim();
+    state.time = $radioSection.querySelector('.active')?.textContent?.trim() as StateTime;
+    console.log(state.time);
   });
 
   $reserveBtnGroup.addEventListener('click', e => {
-    const eventTarget = <HTMLElement>e.target;
+    const eventTarget = e.target as HTMLElement;
 
     if (eventTarget.matches('.reservation-completed')) {
       setReserveInfo();

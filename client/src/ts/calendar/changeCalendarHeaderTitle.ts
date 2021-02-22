@@ -28,8 +28,3 @@ export const changeCalendarHeaderTitle = ((): (() => void) => {
     $titleYear.textContent = `${state.year}`;
   };
 })();
-
-export const setStateMonthAndDate = (month: number, date: number): void => {
-  state.month += month;
-  state.date = date;
-};
