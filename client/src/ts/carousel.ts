@@ -7,9 +7,10 @@ const todayDate = new Date().getDate();
 const today = `${todayYear}${("0" + todayMonth).slice(-2)}${("0" + (todayDate-1)).slice(-2)}`
 // console.log(today);
 
-const $boxofficeList = document.querySelector('.boxoffice_list') as HTMLInputElement;
-const $prevBtn = document.querySelector('.prev') as HTMLInputElement;
-const $nextBtn = document.querySelector('.next') as HTMLInputElement;
+const $boxofficeList = document.querySelector('.boxoffice_list') as HTMLElement;
+const $prevBtn = document.querySelector('.prev') as HTMLElement;
+const $nextBtn = document.querySelector('.next') as HTMLElement;
+let movielist: [] = [];
 
 interface Boxoffice {
   title: string;
@@ -18,52 +19,66 @@ interface Boxoffice {
   rank: number;
 }
 
-let currentSlide = 2;
-const delayTime = 500;
+let delayTime = 500;
+let currentSlide = 0;
+
 
 const boxofficeRender = (movieList: []) => {
   $boxofficeList.innerHTML = movieList.map(({title, image, director}: Boxoffice, index: number) => 
-    `<li class="${currentSlide === index ? 'active' : ''}"><img src="${image}" alt=""> <div class="movie-info"><p class="movie-title">${title}</p>
+    `<li id="${index + 1}" class="${currentSlide === index ? 'active' : ''}"><img src="${image}" alt=""> <div class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director}</p></div>
     <button class="movie-details">상세정보</button>
     <button class="booking-btn">예매하기</button>
     </li>`
   ).join('');
 
-  // const $activeList = document.querySelectorAll('.boxoffice_list > li');
-  // movieList.match((_, i) => currentSlide = i).
-  
+  const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(true);
+  const $clonedSecond = ($boxofficeList.querySelector('li:nth-child(2)') as HTMLElement).cloneNode(true);
+  const $clonedLast = ($boxofficeList.lastElementChild as HTMLElement).cloneNode(true);
+  const $clonedSecondLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 1})`) as HTMLElement).cloneNode(true);
+
+  $boxofficeList.append($clonedFirst, $clonedSecond);
+  $boxofficeList.prepend($clonedLast, $clonedSecondLast);
 };
 
 const getMovieList = async () => {
   const movieList = await (await axios.get(`/movielist/${today}`)).data;
   boxofficeRender(movieList);
-  // const $boxofficeCarousel = document.querySelector('.boxoffice_carousel') as HTMLElement;
-  // $boxofficeCarousel.style.width = `${movieList.length * 400}px`;
-  // console.log($boxofficeList.scrollWidth);
-  console.log(movieList);
+  movielist = movieList;
+  $boxofficeList.style.width = `${(movieList.length + 4) * 310}px`;
 };
-// getMovieList();
-
-
 
 const setBoxofficeList = () => {
   $boxofficeList.style.setProperty('--currentSlide', `${currentSlide}`);
   $boxofficeList.style.setProperty('--duration', `${delayTime}`);
 };
 
+$boxofficeList.ontransitionend = () => {
+  if (currentSlide === movielist.length) {
+    currentSlide = 0;
+    delayTime = 0;
+    setBoxofficeList();
+  }
+  if (currentSlide === -1) {
+    currentSlide = movielist.length -1;
+    delayTime = 0;
+    setBoxofficeList();
+  }
+};
 
 $nextBtn.onclick = () => {
   currentSlide += 1;
   setBoxofficeList();
-  getMovieList();
+  boxofficeRender(movielist);
 };
 
 $prevBtn.onclick = () => {
   currentSlide -= 1;
   setBoxofficeList();
-  getMovieList();
+  boxofficeRender(movielist);
 };
+
+
 
 export default getMovieList;
 
