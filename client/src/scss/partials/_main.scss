@@ -37,9 +37,11 @@
     transform: translate3d(0, -50%, 0);
     border: 0;
     background-color: transparent;
+
     &:active {
       transform: scale(0.95) translate3d(0, -50%, 0);
     }
+
     &_icon {
       font-size: 3rem;
       color: #fff;

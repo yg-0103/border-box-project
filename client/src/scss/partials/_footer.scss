@@ -13,7 +13,7 @@
     img {
       width: 260px;
     }
-  } 
+  }
 
   .footer_copyright {
     display: block;
@@ -51,6 +51,8 @@
   position: fixed;
   bottom: 40px;
   right: 40px;
+  transition: 0.4s;
+  transform: translate3d(0, 200px, 0);
 
   img {
     width: 60px;
