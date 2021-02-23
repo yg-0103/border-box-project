@@ -24,12 +24,15 @@ app.get('/movielist/:today', async (req, res) => {
   res.send(movieList);
 });
 
+app.get('/reserve', (req, res) => {
+  res.send(reserveInformation);
+});
+
 app.get('/reserve/:id', (req, res) => {
   const reserve = reserveInformation.find(
     ({ reserveId }) => req.params.id === reserveId
   );
 
-  console.log(reserve, req.params.id);
   res.send(reserve);
 });
 

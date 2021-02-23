@@ -131,10 +131,10 @@
         height: 50px;
         border-radius: 10px;
         margin-right: 5px;
-        border: 1px solid $color-primary;
 
         label {
           @include flex-center();
+          border: 1px solid $color-primary;
           flex-direction: column;
           width: 100%;
           height: 100%;
@@ -150,6 +150,12 @@
           &:checked+label {
             background: $color-primary;
             color: #fff;
+          }
+
+          &:disabled+label {
+            background-color: $color-darkgray;
+            color: gray;
+            border: none;
           }
         }
 
@@ -172,6 +178,11 @@
         .reservation-completed {
           background: $color-primary;
           color: #fff;
+
+          &:disabled {
+            background: $color-darkgray;
+            color: gray;
+          }
         }
 
         .reservation-close {

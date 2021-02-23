@@ -38,7 +38,6 @@ const getMovieList = async () => {
   // const $boxofficeCarousel = document.querySelector('.boxoffice_carousel') as HTMLElement;
   // $boxofficeCarousel.style.width = `${movieList.length * 400}px`;
   // console.log($boxofficeList.scrollWidth);
-  console.log(movieList);
 };
 // getMovieList();
 
