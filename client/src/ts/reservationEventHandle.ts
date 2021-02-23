@@ -46,7 +46,7 @@ export default () => {
 
   $btnPrev.addEventListener('click', prevAndNextCalendarHandle);
 
-  $calendarContainer.addEventListener('click', (e) => {
+  $calendarContainer.addEventListener('click', e => {
     const eventTarget = e.target as HTMLElement;
 
     if (!eventTarget.matches('button')) return;
@@ -55,7 +55,7 @@ export default () => {
     calendarRender();
   });
 
-  $radioSection.addEventListener('change', (e) => {
+  $radioSection.addEventListener('change', e => {
     const eventTarget = e.target as HTMLElement;
 
     (document.querySelector(
@@ -69,7 +69,7 @@ export default () => {
       ?.textContent?.trim() as StateTime;
   });
 
-  $reserveBtnGroup.addEventListener('click', (e) => {
+  $reserveBtnGroup.addEventListener('click', e => {
     const eventTarget = e.target as HTMLElement;
 
     if (eventTarget.matches('.reservation-completed')) {

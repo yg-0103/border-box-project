@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { ReserveData } from './model';
 
 const renderCompleted = (reserveData: ReserveData) => {
