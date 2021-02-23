@@ -10,7 +10,8 @@ export const changeRadioDisabled = async () => {
     const activeTime = reserveInfo
       .filter(({ reserveDate }: {reserveDate: string}) => reserveDate === state.today)
       .map(({ reserveTime }: { reserveTime: string}) => reserveTime);
-
+    const time = new Date().getHours();
+    console.log(time, state.time);
     Array.from($radio).forEach(radio => {
       radio.disabled = activeTime.includes(radio.parentNode?.textContent?.trim());
     });
