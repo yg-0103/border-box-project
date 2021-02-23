@@ -24,6 +24,10 @@ export interface State {
   time: StateTime;
 }
 
+interface BoxOfficeMovieList {
+  movieList: []
+};
+
 export const reserveData: ReserveData = {
   movieImg: '',
   movieTitle: '',
@@ -41,4 +45,8 @@ export const state: State = {
   date: 0,
   today: '',
   time: StateTime.A,
+};
+
+export const boxOfficeMovieList: BoxOfficeMovieList = {
+  movieList: [],
 };
