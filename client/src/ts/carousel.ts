@@ -20,6 +20,7 @@ interface Boxoffice {
   image: string;
   director: string;
   rank: number;
+  link?: string;
 }
 
 let delayTime = 500;
