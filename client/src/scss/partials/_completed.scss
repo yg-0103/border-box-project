@@ -13,12 +13,10 @@
   &_movie-title {
     @include font(36px, bold);
     letter-spacing: 2px;
-    padding: 20px;
+    padding: 20px 0 15px;
     width: 480px;
-    border {
-      top: 3px solid $color-black;
-      bottom: 3px solid $color-black;
-    }
+    border-top: 3px solid $color-black;
+    border-bottom: 3px solid $color-black;
   }
 
   &_reservation-number {
