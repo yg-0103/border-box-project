@@ -1,3 +1,7 @@
+.modal-section {
+  display: none;
+}
+
 .boxoffice_headline {
   display: none;
 }
@@ -88,12 +92,12 @@
     }
 
     .movie-title {
-      font-size: 24px;
+      font-size: 20px;
     }
 
     .movie-director {
       padding-top: 10px;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .movie-details,
