@@ -29,6 +29,7 @@ const myBooking = () => {
 
   const openMyBooking = () => {
     $myBooking.classList.add('active');
+    $myBookingInput.focus();
   };
 
   const closeMybooking = () => {
