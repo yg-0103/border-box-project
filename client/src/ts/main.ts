@@ -5,3 +5,4 @@ import scrollGoToTop from './scrollGoToTop';
 scrollGoToTop();
 reservation();
 myBooking();
+
