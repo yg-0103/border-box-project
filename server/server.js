@@ -21,7 +21,19 @@ app.get('/movielist/:today', async (req, res) => {
     ...movieNameAndRank[i],
   }));
 
-  res.send(movieList.slice(0, 10));
+  res.send(movieList);
+});
+
+app.get('/reserve', (req, res) => {
+  res.send(reserveInformation);
+});
+
+app.get('/reserve/:id', (req, res) => {
+  const reserve = reserveInformation.find(
+    ({ reserveId }) => req.params.id === reserveId
+  );
+
+  res.send(reserve);
 });
 
 app.post('/reserve', (req, res) => {

@@ -67,16 +67,30 @@
                 </div>
                 <div class="main-container"></div>
               </div>
-              <div class="btn-group">
-                <button type="button" class="reservation-completed" title="예매하기">
-                  예약
-                </button>
-                <button type="button" class="reservation-cancel" title="예매 취소">
-                  취소
-                </button>
-                <button type="button" class="reservation-close" title="예매 페이지 나가기">
-                  <i class='bx bx-x'></i>
-                </button>
+          </div>
+          <div class="radio-section">
+            <div class="radio-container active">
+              <input id="A" type="radio" name="time-table" class="radio_time-table" />
+              <label for="A">A Time <span>(10:00 - 13:00)</span></label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" id="B" name="time-table" class="radio_time-table" />
+              <label for="B">B Time <span>(14:00 - 17:00)</span></label>
+            </div>
+            <div class="radio-container">
+              <input type="radio" id="C" name="time-table" class="radio_time-table" />
+              <label for="C"> C Time <span>(18:00 - 21:00)</span></label>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="reservation-completed" title="예매하기" disabled>
+                예약
+              </button>
+              <button type="button" class="reservation-cancel" title="예매 취소">
+                취소
+              </button>
+              <button type="button" class="reservation-close" title="예매 페이지 나가기">
+                <i class='bx bx-x'></i>
+              </button>
             </div>
           </div>
         </section>
@@ -85,7 +99,6 @@
       <section class="completed">
       </section>
       <div class="completed_overlay"></div>
-
       <section class="myBooking">
         <h3 class="myBooking_heading">예약 확인</h3>
         <form class="myBooking_form">
@@ -95,9 +108,7 @@
         <button type="button" class="myBooking_close"><i class="bx bx-x"></i></button>
       </section>
       <div class="myBooking_overlay"></div>
-
     </div>
-
     <!-- borderbox introduction  -->
     <section class="introduction">
       <h2>ESPECIALLY FOR YOU</h2>

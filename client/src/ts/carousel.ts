@@ -4,7 +4,7 @@ const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
 const todayDate = new Date().getDate();
 
-const today = `${todayYear}${("0" + todayMonth).slice(-2)}${("0" + (todayDate-1)).slice(-2)}`
+const today = `${todayYear}${('0' + todayMonth).slice(-2)}${('0' + (todayDate - 1)).slice(-2)}`;
 // console.log(today);
 
 const $boxofficeList = document.querySelector('.boxoffice_list') as HTMLElement;
@@ -24,13 +24,13 @@ let currentSlide = 0;
 
 
 const boxofficeRender = (movieList: []) => {
-  $boxofficeList.innerHTML = movieList.map(({title, image, director}: Boxoffice, index: number) => 
-    `<li id="${index + 1}" class="${currentSlide === index ? 'active' : ''}"><img src="${image}" alt=""> <div class="movie-info"><p class="movie-title">${title}</p>
+  $boxofficeList.innerHTML = movieList.map(({ title, image, director }: Boxoffice, index: number) => `
+    <li class="${currentSlide === index ? 'active' : ''}"><img src="${image}" alt=""> 
+    <div class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director}</p></div>
     <button class="movie-details">상세정보</button>
     <button class="booking-btn">예매하기</button>
-    </li>`
-  ).join('');
+    </li>`).join('');
 
   const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(true);
   const $clonedSecond = ($boxofficeList.querySelector('li:nth-child(2)') as HTMLElement).cloneNode(true);
@@ -81,4 +81,3 @@ $prevBtn.onclick = () => {
 
 
 export default getMovieList;
-

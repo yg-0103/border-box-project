@@ -8,8 +8,9 @@ export enum StateTime {
 export interface ReserveData {
   movieImg: string;
   movieTitle: string | null;
-  reserveTime: string | null;
+  reserveTime: string
   reserveDate: string;
+  reserveId: string;
 }
 
 export interface State {
@@ -28,6 +29,7 @@ export const reserveData: ReserveData = {
   movieTitle: '',
   reserveDate: '',
   reserveTime: '',
+  reserveId: ''
 };
 
 export const state: State = {
