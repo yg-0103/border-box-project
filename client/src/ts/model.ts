@@ -10,6 +10,7 @@ export interface ReserveData {
   movieTitle: string | null;
   reserveTime: string | null;
   reserveDate: string;
+  reserveId?: string;
 }
 
 export interface State {

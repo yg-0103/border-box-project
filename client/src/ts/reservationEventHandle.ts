@@ -1,4 +1,7 @@
-import { reserveData, state, StateTime } from './model';
+import axios from 'axios';
+import {
+  reserveData, ReserveData, state, StateTime
+} from './model';
 import renderCompleted from './completed';
 import { calendarRender } from './calendar/calendarRender';
 import { setStateMonthAndDate, setStateMonthAndYear } from './calendar/setCaledarState';
@@ -20,6 +23,11 @@ const setReserveInfo = (): void => {
   ) as HTMLElement).textContent;
   reserveData.reserveDate = state.today;
   reserveData.reserveTime = state.time;
+};
+
+const postReserveInfo = async (reserveData: ReserveData) => {
+  const reserve = await axios.post('/reserve', { reserveData });
+  console.log(reserve);
 };
 
 const setBtnDisplay = (btnPrev: string, btnNext: string): void => {
@@ -76,6 +84,7 @@ export default () => {
 
     if (eventTarget.matches('.reservation-completed')) {
       setReserveInfo();
+      postReserveInfo(reserveData);
       renderCompleted(reserveData);
       (document.querySelector('.completed') as HTMLElement).classList.add(
         'active'
