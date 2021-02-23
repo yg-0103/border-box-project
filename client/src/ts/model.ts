@@ -8,9 +8,9 @@ export enum StateTime {
 export interface ReserveData {
   movieImg: string;
   movieTitle: string | null;
-  reserveTime: string | null;
+  reserveTime: string;
   reserveDate: string;
-  reserveId?: string;
+  reserveId: string;
 }
 
 export interface State {

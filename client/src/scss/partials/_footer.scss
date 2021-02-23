@@ -1,6 +1,6 @@
 .footer {
+  @include background-black;
   height: 270px;
-  background-color: $color-black;
   opacity: 0.95;
   color: $color-white;
   padding: 40px;

@@ -3,17 +3,17 @@
 .reservation-container {
   @include position(fixed, $top: 0, $left: 0);
   @include flex-center();
+  @include background-overlay;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, .7);
   backdrop-filter: blur(3px);
 
   // opacity: 0;
   // z-index: -1000;
 
   section {
-    background: rgba(255, 255, 255, .9);
-    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .3);
+    @include background-modal;
+    @include box-shadow;
     border: 1px solid $color-black;
     border-radius: 15px;
     padding: 30px;
@@ -41,35 +41,32 @@
 
       .calendar {
         @include margin-center(470px);
+        @include background-white;
         margin-bottom: 30px;
         box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         position: relative;
-        background: #fff;
 
         .heading-container {
-          background: $color-primary;
+          @include flex(center, center, column);
+          @include backgroun-primary;
           margin: 0 auto;
-          position: relative;
-          display: flex;
-          flex-flow: column nowrap;
           padding: 20px;
-          align-items: center;
-          justify-content: center;
-          color: #fff;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
+          position: relative;
+          color: $color-white;
+          border-top: {
+            left-radius: 10px;
+            right-radius: 10px;
+          }
         }
 
         .heading-container button {
+          @include button-clear;
           position: absolute;
           top: 50%;
           transform: translate3d(0, -50%, 0);
-          background: none;
-          border: none;
           font-size: 30px;
-          color: #fff;
-          outline: none;
+          color: $color-white;
           cursor: pointer;
         }
 
@@ -87,97 +84,89 @@
           grid-template: repeat(1, 1fr) / repeat(7, 1fr);
           text-align: center;
           padding: 10px 0;
-          color: #aaa;
+          color: $color-darkgray;
           font-weight: bold;
         }
 
         .main-container {
+          @include font-content-medium;
           display: grid;
           grid-template-columns: repeat(7, 1fr);
           margin: 0 auto;
           text-align: center;
           border-top: none;
-          @include font (20px, 400)
         }
 
         .main-container button {
+          @include button-clear;
+          @include font-content-medium;
           padding: 20px;
           border-radius: 50%;
           transition: background-color 0.2s;
           cursor: pointer;
-          border: none;
-          background: none;
-          @include font(20px, 400)
         }
 
         // .main-container button:hover {
-        //   color: #fff;
+        //   color: $color-white;
         //   background-color: $color-primary;
         // }
 
         .main-container button.active {
-          background: $color-primary;
-          color: #fff;
+          @include button-active;
         }
       }
 
       .radio-container {
         @include font(20px, 700);
+        @include button-normal;
         display: inline-flex;
-        background: #fff;
         justify-content: center;
         align-items: center;
         width: 200px;
         height: 50px;
         border-radius: 10px;
         margin-right: 5px;
-        border: 1px solid $color-primary;
 
         label {
-          @include flex-center();
+          @include flex-center;
           flex-direction: column;
           width: 100%;
           height: 100%;
           border-radius: 5px;
           cursor: pointer;
-          transition: 0.2s
+          transition: 0.2s;
         }
 
         input {
           position: absolute;
           opacity: 0;
 
-          &:checked+label {
-            background: $color-primary;
-            color: #fff;
+          &:checked + label {
+            @include button-active;
           }
         }
-
-
       }
 
       .btn-group {
+        @include flex-center;
         margin-top: 30px;
-        @include flex-center();
 
         button {
           @include font(25px, 700);
+          @include button-normal;
           width: 200px;
           height: 50px;
-          background: none;
           margin-left: 30px;
-
         }
 
         .reservation-completed {
-          background: $color-primary;
-          color: #fff;
+          @include button-active;
         }
 
         .reservation-close {
           @include position(absolute, $top: 0, $right: 0);
+          @include button-clear;
           width: 50px;
-          border: none;
           font-size: 50px;
         }
       }
