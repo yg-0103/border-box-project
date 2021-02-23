@@ -29,6 +29,7 @@ export const reserveData: ReserveData = {
   movieTitle: '',
   reserveDate: '',
   reserveTime: '',
+  reserveId: '',
 };
 
 export const state: State = {
