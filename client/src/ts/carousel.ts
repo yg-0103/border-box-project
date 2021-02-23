@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import movieDetail from './detail';
-import { boxOfficeMovieList } from './model';
+import { boxOfficeMovieList } from './store';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;

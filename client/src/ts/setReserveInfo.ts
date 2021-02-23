@@ -1,7 +1,11 @@
-import { ReserveData, reserveData, state } from './model';
+import { reserveData, state } from './store';
+import { ReserveData } from './interface/ReserveData';
 
 export const setReserveInfo = (():(() => ReserveData) => {
-  const generateReserveId = () => state.today.split('-').map(day => (+day < 10 ? '0' + day : day)).join('') + state.time[0];
+  const generateReserveId = () => state.today
+    .split('-')
+    .map(day => (+day < 10 ? '0' + day : day))
+    .join('') + state.time[0];
 
   return () => {
     reserveData.movieImg = (document.querySelector('.img-container img') as HTMLImageElement).src;

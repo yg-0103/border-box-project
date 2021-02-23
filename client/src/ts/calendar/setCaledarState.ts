@@ -1,4 +1,4 @@
-import { state } from '../model';
+import { state } from '../store';
 
 export const setStateMonthAndDate = (month: number, date: number): void => {
   state.month += month;

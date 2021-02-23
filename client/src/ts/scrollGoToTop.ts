@@ -1,20 +1,7 @@
+import throttle from './utils/throttle';
+
 const TOP_POS_TO_START_SHOWING = 200;
 const $goToTop = document.querySelector('.gototop') as HTMLElement;
-
-// eslint-disable-next-line no-unused-vars
-const throttle = (callback: (() => void), delay: number): ((e: Event) => void) => {
-  let timerId: ReturnType<typeof setTimeout> | null;
-
-  return e => {
-    if (timerId) return;
-
-    timerId = setTimeout(() => {
-      callback();
-
-      timerId = null;
-    }, delay, e);
-  };
-};
 
 export default () => {
   window.addEventListener('scroll', throttle(() => {
@@ -25,6 +12,7 @@ export default () => {
 
   $goToTop.addEventListener('click', e => {
     e.preventDefault();
+
     window.scroll({
       top: 0,
       behavior: 'smooth',

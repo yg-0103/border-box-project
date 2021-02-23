@@ -1,4 +1,4 @@
-import { ReserveData } from './model';
+import { ReserveData } from './interface/ReserveData';
 // import deleteReserve from './ajax/ajaxReserveInfo';
 
 const renderCompleted = (reserveData: ReserveData) => {

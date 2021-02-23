@@ -1,11 +1,13 @@
 import getMovieList from './carousel';
-import reservation from './reservationEventHandle';
+import reservation from './eventHandle/reservationEventHandle';
 import myBooking from './myBooking';
 import scrollGoToTop from './scrollGoToTop';
 import { changeRadioDisabled } from './ajax/changeRadioDisabled';
+import movieListEventHandle from './eventHandle/movieListEventHandle';
 
-changeRadioDisabled();
 scrollGoToTop();
 getMovieList();
+movieListEventHandle();
+changeRadioDisabled();
 reservation();
 myBooking();
