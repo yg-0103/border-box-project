@@ -49,7 +49,7 @@
 
         .heading-container {
           @include flex(center, center, column);
-          @include backgroun-primary;
+          @include background-primary;
           margin: 0 auto;
           padding: 20px;
           position: relative;
