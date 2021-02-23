@@ -1,3 +1,7 @@
+// .modal-section {
+//   display: none;
+// }
+
 .boxoffice_headline {
   display: none;
 }
@@ -51,6 +55,7 @@
 }
 
 .boxoffice-container {
+  position: relative;
   background-color: $color-black;
   opacity: 0.95;
   height: 800px;
@@ -59,10 +64,11 @@
   .boxoffice_carousel {
     position: relative;
     height: 100%;
-    // width: 1000px;
     width: 1600px;
+    // width: 1600px;
     overflow: hidden;
     margin: 0 auto;
+    padding-left: 50px;
   }
 
   .boxoffice_list {
@@ -70,12 +76,12 @@
     --duration: 0;
     display: flex;
     flex-flow: row nowrap;
-    width: 4600px;
+    // width: 2400px;
     // width: 100%;
-    padding-left: 70px;
+    // padding-left: 70px;
+    justify-content: space-between;
     transition: transform calc(var(--duration) * 1ms) ease-out;
-    transform: translate3D(calc(var(--currentSlide) * -3%), 0, 0);
-    justify-content: space-around;
+    transform: translate3D(calc(var(--currentSlide) * -320px), 0, 0);
 
     li {
       position: relative;
@@ -84,7 +90,7 @@
       background: skyblue;
       color: $color-white;
       margin: 182px 0;
-      margin-right: 100px;
+      padding: 0 50px;
       transition: all ease-out;
 
       &.active {
@@ -92,19 +98,23 @@
       }
 
       img {
+        position: absolute;
+        top: 0;
+        left: 0; 
         width: 100%;
         height: 100%;
       }
     }
 
     .movie-info {
-      height: 100px;
+      height: 80px;
       width: 100%;
       position: absolute;
       bottom: 0;
+      left: 0;
       background: #55555534;
-      padding-top: 25px;
-      padding-left: 20px;
+      padding-top: 18px;
+      padding-left: 8px;
     }
 
     .movie-title {
@@ -119,42 +129,54 @@
     .movie-details,
     .booking-btn {
       position: absolute;
-      right: 20px;
+      right: 10px;
       outline: none;
     }
 
     .movie-details {
-      bottom: 60px;
+      bottom: 40px;
     }
 
     .booking-btn {
-      bottom: 20px;
+      bottom: 10px;
     }
   }
 }
 
-.carousel-control {
+.carousel-control-container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 60px;
-  color: $color-white;
-  background-color: transparent;
-  border-color: transparent;
-  cursor: pointer;
-  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  // font-size: 60px;
+  // color: $color-white;
+  // background-color: transparent;
+  // border-color: transparent;
+  // z-index: 99;
 
-  &:focus {
-    outline: none;
+  // &:focus {
+  //   outline: none;
+  // }
+
+  .prev, .next {
+    cursor: pointer;
+    font-size: 60px;
+    color: $color-white;
+    background-color: transparent;
+    border-color: transparent;
+    z-index: 99;
+
+    &:focus {
+      outline: none;
+    }
+    // left: 10px;
   }
 
-  &.prev {
-    left: 10px;
-  }
-
-  &.next {
-    right: 10px;
-  }
+  // .next {
+  //   right: 10px;
+  // }
 }
 
 .introduction {
