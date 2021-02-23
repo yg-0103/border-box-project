@@ -43,6 +43,13 @@
         border: 3px solid $color-primary;
       }
     }
+
+    .invalid {
+      font-size: 1rem;
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
   }
 
   .myBooking_close {
@@ -58,7 +65,7 @@
     }
   }
 
-  ~.myBooking_overlay {
+  ~ .myBooking_overlay {
     display: none;
     @include position(fixed, 0, 0, 0, 0);
     background-color: rgba($color: #000000, $alpha: 0.8);
@@ -68,7 +75,7 @@
   &.active {
     display: block;
 
-    ~.myBooking_overlay {
+    ~ .myBooking_overlay {
       display: block;
     }
   }
