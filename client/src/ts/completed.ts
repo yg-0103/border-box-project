@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { ReserveData } from './model';
 
 const renderCompleted = ({
@@ -10,19 +11,35 @@ const renderCompleted = ({
     new Date(reserveDate).getDay()
   ];
 
-  const reserveNumber = new Date(reserveDate).getMonth() > 8
-    ? reserveDate.replace(/-/g, '') + (reserveTime as string).slice(0, 1)
-    : (reserveDate.slice(0, 4) + '0' + reserveDate.slice(4)).replace(
-      /-/g,
-      ''
-    ) + (reserveTime as string).slice(0, 1);
+  const reserveId =
+    new Date(reserveDate).getMonth() > 8
+      ? reserveDate.replace(/-/g, '') + (reserveTime as string).slice(0, 1)
+      : (reserveDate.slice(0, 4) + '0' + reserveDate.slice(4)).replace(
+          /-/g,
+          ''
+        ) + (reserveTime as string).slice(0, 1);
 
-  const qrData = `예약 번호: ${reserveNumber} / 영화 제목: ${movieTitle} / 예약 날짜: ${reserveDate} / 예약 시간: ${reserveTime}`;
+  const reserveData: ReserveData = {
+    movieImg,
+    movieTitle,
+    reserveDate,
+    reserveTime,
+    reserveId,
+  };
+
+  const postReserveData = async () => {
+    const reserve = await axios.post('/reserve', reserveData);
+    console.log(reserve);
+  };
+
+  postReserveData();
+
+  const qrData = `예약 번호: ${reserveId} / 영화 제목: ${movieTitle} / 예약 날짜: ${reserveDate} / 예약 시간: ${reserveTime}`;
 
   (document.querySelector('.completed') as HTMLElement).innerHTML = `
     <h3 class="completed_movie-title">${movieTitle}</h3>
       <div class="completed_reservation-number">
-        예약 번호<span class="reservation-number">${reserveNumber}</span>
+        예약 번호<span class="reservation-number">${reserveId}</span>
       </div>
       <img
         class="completed_image"

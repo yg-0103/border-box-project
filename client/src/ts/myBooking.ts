@@ -1,4 +1,6 @@
-// import renderCompleted from './completed';
+import axios from 'axios';
+import renderCompleted from './completed';
+
 const $btnMyBooking = document.querySelector(
   '.btn-myBooking'
 ) as HTMLButtonElement;
@@ -20,14 +22,19 @@ const cleanInput = () => {
 
 const closeMybooking = () => {
   $myBooking.classList.remove('active');
+  $invalid.style.display = 'none';
   cleanInput();
 };
 
-const myBooking = (() => {
+const myBooking = () => {
   $btnMyBooking.addEventListener('click', () => {
     $myBooking.classList.add('active');
   });
   $closeBtn.addEventListener('click', closeMybooking);
+
+  (document.querySelector(
+    '.myBooking_overlay'
+  ) as HTMLElement).addEventListener('click', closeMybooking);
 
   $myBookingForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -37,16 +44,15 @@ const myBooking = (() => {
       cleanInput();
       return;
     }
+    const getReserveData = async () => {
+      const reserveData = await axios.get(`/reserve/${$myBookingInput.value}`);
+      console.log(reserveData);
+    };
 
-    /*
-    $myBookingInput.value로 서버에서 해당 예매 정보 검색
-    -> 찾은 객체를 인수로 completed의 render 함수 실행
-    renderCompleted()
-    */
+    getReserveData();
+
     closeMybooking();
   });
-
-  return () => {};
-})();
+};
 
 export default myBooking;
