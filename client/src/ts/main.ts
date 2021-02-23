@@ -1,6 +1,6 @@
-import calender from './calender';
-import getMovieList from './carousel';
-import calender from './reservation';
+import reservation from './reservationEventHandle';
+import myBooking from './myBooking';
 
-calender();
-getMovieList();
+reservation();
+myBooking();
+

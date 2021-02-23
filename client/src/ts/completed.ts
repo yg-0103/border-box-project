@@ -1,12 +1,5 @@
 import { ReserveData } from './model';
 
-// interface ReserveData {
-//   movieImg: string;
-//   movieTitle: string;
-//   reserveDate: string;
-//   reserveTime: string;
-// }
-
 const renderCompleted = ({
   movieImg,
   movieTitle,
@@ -17,14 +10,14 @@ const renderCompleted = ({
     new Date(reserveDate).getDay()
   ];
 
-  const reserveNumber = reserveDate.replace('/-/g', '') + (reserveTime as string).slice(0, 1);
+  const reserveNumber = new Date(reserveDate).getMonth() > 8
+    ? reserveDate.replace(/-/g, '') + (reserveTime as string).slice(0, 1)
+    : (reserveDate.slice(0, 4) + '0' + reserveDate.slice(4)).replace(
+      /-/g,
+      ''
+    ) + (reserveTime as string).slice(0, 1);
 
-  const qrData = `
-    예약 번호: ${reserveNumber} /
-    영화 제목: ${movieTitle} /
-    예약 날짜: ${reserveDate} /
-    예약 시간: ${reserveTime}
-  `;
+  const qrData = `예약 번호: ${reserveNumber} / 영화 제목: ${movieTitle} / 예약 날짜: ${reserveDate} / 예약 시간: ${reserveTime}`;
 
   (document.querySelector('.completed') as HTMLElement).innerHTML = `
     <h3 class="completed_movie-title">${movieTitle}</h3>
@@ -42,9 +35,23 @@ const renderCompleted = ({
       </div>
       <div class="completed_qrcode">
         BORDER BOX
-        <img class="completed_qrcode_image" src="http://api.qrserver.com/v1/create-qr-code/?data=${qrData}&size=120x120" alt="QR코드" />
+        <img class="completed_qrcode_image" src="src/img/tail-spin.svg" alt="QR코드" />
     </div>
   `;
+
+  setTimeout(() => {
+    (document.querySelector(
+      '.completed_qrcode_image'
+    ) as HTMLImageElement).src = `http://api.qrserver.com/v1/create-qr-code/?data=${qrData}&size=120x120`;
+  });
+
+  document
+    .querySelector('.completed_overlay')
+    ?.addEventListener('click', () => {
+      (document.querySelector('.completed') as HTMLElement).classList.remove(
+        'active'
+      );
+    });
 };
 
 export default renderCompleted;

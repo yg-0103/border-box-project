@@ -7,6 +7,7 @@
   background-color: $color-black;
   padding-top: 50px;
   border-bottom: 2px solid $color-gray;
+  position: relative;
 
   .header_headline {
     width: 600px;
@@ -27,6 +28,22 @@
     font-size: 26px;
     font-weight: 900;
     margin: 16px auto 0px;
+  }
+
+  .btn-myBooking {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    border: 0;
+    background-color: transparent;
+    &:active {
+      transform: scale(0.95) translate3d(0, -50%, 0);
+    }
+    &_icon {
+      font-size: 3rem;
+      color: #fff;
+    }
   }
 }
 
@@ -55,6 +72,7 @@
     padding-left: 70px;
     transition: transform calc(var(--duration) * 1ms) ease-out;
     transform: translate3D(calc(var(--currentSlide) * -3%), 0, 0);
+    justify-content: space-around;
 
     li {
       position: relative;
