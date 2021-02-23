@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { state } from '../model';
+import { state } from '../store';
 
 const $radioContainer = document.querySelector('.radio-section') as HTMLElement;
 const $radio = $radioContainer.querySelectorAll('input');
@@ -7,13 +7,14 @@ const $radio = $radioContainer.querySelectorAll('input');
 export const changeRadioDisabled = async () => {
   try {
     const { data: reserveInfo } = await axios.get('/reserve');
+
     const activeTime = reserveInfo
       .filter(({ reserveDate }: {reserveDate: string}) => reserveDate === state.today)
       .map(({ reserveTime }: { reserveTime: string}) => reserveTime);
-    const time = new Date().getHours();
-    console.log(time, state.time);
+
     Array.from($radio).forEach(radio => {
-      radio.disabled = activeTime.includes(radio.parentNode?.textContent?.trim());
+      radio.disabled = activeTime
+        .includes(radio.parentNode?.textContent?.trim());
     });
   } catch (e) {
     throw new Error('failed get reserveInfo');

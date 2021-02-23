@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { boxOfficeMovieList } from './model'
+import { boxOfficeMovieList } from './store';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
@@ -22,7 +22,9 @@ let delayTime = 500;
 let currentSlide = 0;
 
 const boxofficeRender = (movieList: []) => {
-  $boxofficeList.innerHTML = movieList.map(({ title, image, director, rank }: Boxoffice, index: number) => `
+  $boxofficeList.innerHTML = movieList.map(({
+    title, image, director, rank
+  }: Boxoffice, index: number) => `
     <li id="${rank}" class="${currentSlide === index ? 'active' : ''}"><img src="${image}" alt=""> 
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director}</p></div>
@@ -59,12 +61,12 @@ $boxofficeList.ontransitionend = () => {
     setBoxofficeList();
   }
   if (currentSlide === -1) {
-    currentSlide =boxOfficeMovieList.movieList.length -1;
+    currentSlide = boxOfficeMovieList.movieList.length - 1;
     delayTime = 0;
     setBoxofficeList();
   }
   delayTime = 500;
-  console.log(boxOfficeMovieList.movieList)
+  console.log(boxOfficeMovieList.movieList);
 };
 
 $nextBtn.onclick = () => {

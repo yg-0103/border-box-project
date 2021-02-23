@@ -1,4 +1,4 @@
-import { state } from '../model';
+import { state } from '../store';
 
 export const changeCalendarHeaderTitle = ((): (() => void) => {
   const $titleMonth = document.querySelector('.heading-month') as HTMLElement;

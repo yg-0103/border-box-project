@@ -1,4 +1,4 @@
-import { state } from '../model';
+import { state } from '../store';
 
 export const findSundays = (): number[] => {
   const days: number[] = [
