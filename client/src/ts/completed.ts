@@ -11,6 +11,7 @@ const renderCompleted = ({
     new Date(reserveDate).getDay()
   ];
 
+  document.querySelector('.completed')?.classList.add('active');
   const reserveId =
     new Date(reserveDate).getMonth() > 8
       ? reserveDate.replace(/-/g, '') + (reserveTime as string).slice(0, 1)

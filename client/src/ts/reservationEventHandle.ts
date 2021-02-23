@@ -1,7 +1,11 @@
-import { reserveData, state, StateTime } from './model';
+import axios from 'axios';
+import { reserveData, ReserveData, state, StateTime } from './model';
 import renderCompleted from './completed';
 import { calendarRender } from './calendar/calendarRender';
-import { setStateMonthAndDate, setStateMonthAndYear } from './calendar/setCaledarState';
+import {
+  setStateMonthAndDate,
+  setStateMonthAndYear,
+} from './calendar/setCaledarState';
 
 const $btnNext = document.querySelector('.btn-next') as HTMLButtonElement;
 const $btnPrev = document.querySelector('.btn-prev') as HTMLButtonElement;
@@ -20,6 +24,11 @@ const setReserveInfo = (): void => {
   ) as HTMLElement).textContent;
   reserveData.reserveDate = state.today;
   reserveData.reserveTime = state.time;
+};
+
+const postReserveInfo = async (reserveData: ReserveData) => {
+  const reserve = await axios.post('/reserve', { reserveData });
+  console.log(reserve);
 };
 
 const setBtnDisplay = (btnPrev: string, btnNext: string): void => {
@@ -51,7 +60,7 @@ export default () => {
 
   $btnPrev.addEventListener('click', prevAndNextCalendarHandle);
 
-  $calendarContainer.addEventListener('click', e => {
+  $calendarContainer.addEventListener('click', (e) => {
     const eventTarget = e.target as HTMLElement;
 
     if (!eventTarget.matches('button')) return;
@@ -59,7 +68,7 @@ export default () => {
     calendarRender();
   });
 
-  $radioSection.addEventListener('change', e => {
+  $radioSection.addEventListener('change', (e) => {
     const eventTarget = e.target as HTMLElement;
 
     $radioSection.querySelector('.active')?.classList.remove('active');
@@ -71,15 +80,13 @@ export default () => {
     console.log(state.time);
   });
 
-  $reserveBtnGroup.addEventListener('click', e => {
+  $reserveBtnGroup.addEventListener('click', (e) => {
     const eventTarget = e.target as HTMLElement;
 
     if (eventTarget.matches('.reservation-completed')) {
       setReserveInfo();
+      postReserveInfo(reserveData);
       renderCompleted(reserveData);
-      (document.querySelector('.completed') as HTMLElement).classList.add(
-        'active'
-      );
     }
 
     (document.querySelector(

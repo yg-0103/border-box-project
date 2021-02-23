@@ -22,8 +22,20 @@ const cleanInput = () => {
 
 const closeMybooking = () => {
   $myBooking.classList.remove('active');
+  $invalid.textContent = '';
   $invalid.style.display = 'none';
   cleanInput();
+};
+
+const getReserveData = async () => {
+  try {
+    const response = await axios.get(`/reserve/${$myBookingInput.value}`);
+    const reserveData = await response.data;
+
+    return reserveData;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const myBooking = () => {
@@ -36,22 +48,26 @@ const myBooking = () => {
     '.myBooking_overlay'
   ) as HTMLElement).addEventListener('click', closeMybooking);
 
-  $myBookingForm.addEventListener('submit', (e) => {
+  $myBookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!/\d{8}[A-C]/.test($myBookingInput.value)) {
+      $invalid.textContent = '예약 번호의 형식에 맞지 않습니다.';
       $invalid.style.display = 'inline-block';
       cleanInput();
       return;
     }
-    const getReserveData = async () => {
-      const reserveData = await axios.get(`/reserve/${$myBookingInput.value}`);
-      console.log(reserveData);
-    };
 
-    getReserveData();
-
-    closeMybooking();
+    const reserveData = await getReserveData();
+    if (!reserveData) {
+      $invalid.textContent = '해당 예약 번호에 대한 정보가 없습니다.';
+      $invalid.style.display = 'inline-block';
+      $myBookingInput.value = '';
+      return;
+    } else {
+      renderCompleted(reserveData);
+      closeMybooking();
+    }
   });
 };
 

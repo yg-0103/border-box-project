@@ -29,10 +29,9 @@ const delayTime = 500;
 const boxofficeRender = (movieList: []) => {
   $boxofficeList.innerHTML = movieList
     .map(
-      ({ title, image, director }: Boxoffice, index: number) =>
-        `<li class="${
-          currentSlide === index ? 'active' : ''
-        }"><img src="${image}" alt=""> <div class="movie-info"><p class="movie-title">${title}</p>
+      ({ title, image, director }: Boxoffice, index: number) => `<li class="${
+        currentSlide === index ? 'active' : ''
+      }"><img src="${image}" alt=""> <div class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director}</p></div>
     <button class="movie-details">상세정보</button>
     <button class="booking-btn">예매하기</button>

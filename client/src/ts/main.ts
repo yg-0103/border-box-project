@@ -5,5 +5,6 @@ import getMovieList from './carousel';
 
 getMovieList();
 scrollGoToTop();
+getMovieList();
 reservation();
 myBooking();
