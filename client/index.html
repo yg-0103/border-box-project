@@ -67,29 +67,55 @@
                 </div>
                 <div class="main-container"></div>
               </div>
-          </div>
-          <div class="radio-section">
-            <div class="radio-container active">
-              <input id="A" type="radio" name="time-table" class="radio_time-table" />
-              <label for="A">A Time <span>(10:00 - 13:00)</span></label>
             </div>
-            <div class="radio-container">
-              <input type="radio" id="B" name="time-table" class="radio_time-table" />
-              <label for="B">B Time <span>(14:00 - 17:00)</span></label>
+            <div class="radio-section">
+              <div class="radio-container active">
+                <input
+                  id="A"
+                  type="radio"
+                  name="time-table"
+                  class="radio_time-table"/>
+                <label for="A">A Time <span>(10:00 - 13:00)</span></label>
+              </div>
+              <div class="radio-container">
+                <input
+                  type="radio"
+                  id="B"
+                  name="time-table"
+                  class="radio_time-table"
+                />
+                <label for="B">B Time <span>(14:00 - 17:00)</span></label>
+              </div>
+              <div class="radio-container">
+                <input
+                  type="radio"
+                  id="C"
+                  name="time-table"
+                  class="radio_time-table"
+                />
+                <label for="C"> C Time <span>(18:00 - 21:00)</span></label>
+              </div>
             </div>
-            <div class="radio-container">
-              <input type="radio" id="C" name="time-table" class="radio_time-table" />
-              <label for="C"> C Time <span>(18:00 - 21:00)</span></label>
-            </div>
+
             <div class="btn-group">
+
               <button type="button" class="reservation-completed" title="예매하기" disabled>
+
                 예약
               </button>
-              <button type="button" class="reservation-cancel" title="예매 취소">
+              <button
+                type="button"
+                class="reservation-cancel"
+                title="예매 취소"
+              >
                 취소
               </button>
-              <button type="button" class="reservation-close" title="예매 페이지 나가기">
-                <i class='bx bx-x'></i>
+              <button
+                type="button"
+                class="reservation-close"
+                title="예매 페이지 나가기"
+              >
+                <i class="bx bx-x"></i>
               </button>
             </div>
           </div>
@@ -103,7 +129,8 @@
         <h3 class="myBooking_heading">예약 확인</h3>
         <form class="myBooking_form">
           <label for="myBooking_input">예약 번호를 입력하세요<label>
-              <input type="text" id="myBooking_input" />
+          <input type="text" id="myBooking_input" />
+          <span class="invalid"></span>
         </form>
         <button type="button" class="myBooking_close"><i class="bx bx-x"></i></button>
       </section>

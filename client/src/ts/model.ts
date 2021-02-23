@@ -2,13 +2,13 @@
 export enum StateTime {
   A = 'A Time (10:00 - 13:00)',
   B = 'B Time (14:00 - 17:00)',
-  C = 'C Time (18:00 - 21:00)'
+  C = 'C Time (18:00 - 21:00)',
 }
 
 export interface ReserveData {
   movieImg: string;
   movieTitle: string | null;
-  reserveTime: string
+  reserveTime: string;
   reserveDate: string;
   reserveId: string;
 }
@@ -21,7 +21,7 @@ export interface State {
   month: number;
   today: string;
   date: number;
-  time: StateTime
+  time: StateTime;
 }
 
 export const reserveData: ReserveData = {
@@ -29,7 +29,7 @@ export const reserveData: ReserveData = {
   movieTitle: '',
   reserveDate: '',
   reserveTime: '',
-  reserveId: ''
+  reserveId: '',
 };
 
 export const state: State = {
@@ -40,5 +40,5 @@ export const state: State = {
   month: 0,
   date: 0,
   today: '',
-  time: StateTime.A
+  time: StateTime.A,
 };

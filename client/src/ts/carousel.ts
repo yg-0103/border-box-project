@@ -4,7 +4,10 @@ const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
 const todayDate = new Date().getDate();
 
-const today = `${todayYear}${('0' + todayMonth).slice(-2)}${('0' + (todayDate - 1)).slice(-2)}`;
+const today = `${todayYear}${('0' + todayMonth).slice(-2)}${(
+  '0' +
+  (todayDate - 1)
+).slice(-2)}`;
 // console.log(today);
 
 const $boxofficeList = document.querySelector('.boxoffice_list') as HTMLElement;
@@ -30,7 +33,8 @@ const boxofficeRender = (movieList: []) => {
     <p class="movie-director">${director}</p></div>
     <button class="movie-details">상세정보</button>
     <button class="booking-btn">예매하기</button>
-    </li>`).join('');
+    </li>`)
+    .join('');
 
   const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(true);
   const $clonedSecond = ($boxofficeList.querySelector('li:nth-child(2)') as HTMLElement).cloneNode(true);
