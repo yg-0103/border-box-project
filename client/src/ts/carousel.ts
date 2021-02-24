@@ -27,11 +27,9 @@ const boxofficeRender = (movieList: []) => {
   $boxofficeList.innerHTML = movieList.map(({ title, image, director, rank }: Boxoffice) => `
     <li id="${rank}" ><img src="${image}" alt=""> 
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
-    <p class="movie-director">${director}</p></div>
-    <button id="${rank}" class="movie-details">상세정보</button>
-    <button id="${rank}" class="booking-btn">예매하기</button>
-    </li>`)
-    .join('');
+    <p class="movie-director">${director.substring(0, director.length-1)}</p></div>
+    <div class="movie-control"><button id="${rank}" class="movie-details">상세정보</button>
+    <button id="${rank}" class="booking-btn">예매하기</button></div></li>`).join('');
 
   const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(true);
   const $clonedSecond = ($boxofficeList.querySelector('li:nth-child(2)') as HTMLElement).cloneNode(true);
@@ -39,7 +37,6 @@ const boxofficeRender = (movieList: []) => {
   const $clonedLast = ($boxofficeList.lastElementChild as HTMLElement).cloneNode(true);
   const $clonedSecondLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 1})`) as HTMLElement).cloneNode(true);
   const $clonedThirdLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 2})`) as HTMLElement).cloneNode(true);
-  
   
   lastActivatedNode = $boxofficeList.children[0];
   lastActivatedNode.classList.add('active');
@@ -63,7 +60,7 @@ const setCurrentActive = () => {
   if (index === 11) index = 1;
   if (index === 0) index = 10;
   
-  [...$boxofficeList.children].forEach($child => {
+  Array.from($boxofficeList.children).forEach($child => {
     $child.classList.toggle('active', +$child.id === index);
   });
 
