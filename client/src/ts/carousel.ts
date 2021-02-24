@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { boxOfficeMovieList } from './model'
+import { boxOfficeMovieList } from './store';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
@@ -113,7 +113,7 @@ $nextBtn.onclick = () => {
   if (isClickable) {
     isClickable = false;
     currentSlide += 1;
-    
+
     setCurrentActive();
     setBoxofficeList();
   }

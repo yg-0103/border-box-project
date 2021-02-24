@@ -5,7 +5,7 @@
   @include flex(center, center, column);
   border-radius: 10px;
   text-align: center;
-  padding: 40px 0 10px;
+  padding: 50px 0 20px;
   width: 560px;
   z-index: 100;
   display: none;
@@ -60,7 +60,7 @@
   &_cancel {
     @include font-heading-small;
     @include button-clear;
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 5px 10px;
     color: red;
     &:active {
@@ -68,7 +68,7 @@
     }
   }
   &_close {
-    @include position(absolute, $top: 10px, $right: 10px);
+    @include position(absolute, $top: 8px, $right: 8px);
     @include button-clear;
     i {
       font-size: 40px;
