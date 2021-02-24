@@ -1,9 +1,9 @@
 .footer {
   @include background-black;
-  height: 270px;
+  height: 220px;
   opacity: 0.95;
   color: $color-white;
-  padding: 40px;
+  padding: 15px;
 
   .footer_logo {
     margin: 0 auto;
@@ -11,18 +11,19 @@
     text-align: center;
 
     img {
-      width: 260px;
+      width: 180px;
     }
   }
 
   .footer_copyright {
     display: block;
-    margin-top: 20px;
+    font-size: 14px;
+    margin-top: 15px;
   }
 
   .footer_github {
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 20px;
     width: 450px;
     display: flex;
     justify-content: space-around;
@@ -40,7 +41,7 @@
       color: $color-gray;
       display: block;
       background-color: rgba(221, 221, 221, 0.1);
-      line-height: 25px;
+      line-height: 30px;
       border-radius: 3px;
       margin-top: 10px;
     }
@@ -49,13 +50,13 @@
 
 .gototop {
   position: fixed;
-  bottom: 40px;
+  bottom: 0;
   right: 40px;
   transition: 0.4s;
   transform: translate3d(0, 200px, 0);
 
   img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
   }
 }
