@@ -10,6 +10,7 @@
   opacity: 0;
   z-index: -1000;
   transition: 0.2s;
+  color: $color-darkgray;
 
   &.active {
     opacity: 1;
@@ -19,44 +20,62 @@
   section {
     @include background-modal;
     @include box-shadow;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(233, 233, 233, 1) 25%, rgba(228, 226, 226, 1) 50%, rgba(213, 213, 213, 1) 100%, rgba(217, 216, 216, 0) 100%);
     border: 1px solid $color-black;
     border-radius: 15px;
     padding: 30px;
     display: flex;
 
+
     .img-container {
-      width: 400px;
+      @include font(16px, 700);
+      width: 200px;
+      text-align: center;
+      margin-right: 20px;
+      padding-top: 20px;
+
+      h3 {
+        @include font(20px, 700);
+        margin-bottom: 15px;
+      }
 
       img {
+        @include box-shadow;
+        display: block;
         width: 100%;
-        height: 100%;
+        height: 70%;
+        margin-bottom: 20px;
+      }
+
+      figcaption {
+        display: block;
+        margin-bottom: 10px;
       }
     }
 
     .reservation_time-table {
       flex: 1;
-      padding: 20px;
       text-align: center;
       position: relative;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
 
-      h3 {
-        @include font(30px, 700);
-        margin-bottom: 30px;
-      }
 
       .calendar {
-        @include margin-center(470px);
+        @include margin-center(270px);
         @include background-white;
+        @include box-shadow;
         margin-bottom: 30px;
-        box-shadow: 3px 3px 5px 5px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         position: relative;
 
         .heading-container {
           @include flex(center, center, column);
-          @include backgroun-primary;
+          @include background-primary;
           margin: 0 auto;
-          padding: 20px;
+          padding: 10px 20px;
           position: relative;
           color: $color-white;
 
@@ -86,12 +105,12 @@
         }
 
         .weeks {
+          @include font(12px, 700);
           display: grid;
           grid-template: repeat(1, 1fr) / repeat(7, 1fr);
           text-align: center;
           padding: 10px 0;
           color: $color-darkgray;
-          font-weight: bold;
         }
 
         .main-container {
@@ -105,8 +124,8 @@
 
         .main-container button {
           @include button-clear;
-          @include font-content-medium;
-          padding: 20px;
+          @include font-content-smallest;
+          padding: 12px;
           border-radius: 50%;
           transition: background-color 0.2s;
           cursor: pointer;
@@ -128,7 +147,7 @@
         display: inline-flex;
         justify-content: center;
         align-items: center;
-        width: 200px;
+        width: 100px;
         height: 50px;
         border-radius: 10px;
         margin-right: 5px;
@@ -136,13 +155,17 @@
 
         label {
           @include flex-center();
+          @include font(14px, 700);
+          @include box-shadow;
+
           border: 1px solid $color-primary;
           flex-direction: column;
           width: 100%;
           height: 100%;
           border-radius: 10px;
           cursor: pointer;
-          transition: 0.2s;
+          transition: 0.3s;
+
         }
 
         input {
@@ -154,7 +177,7 @@
           }
 
           &:disabled+label {
-            background-color: $color-darkgray;
+            background-color: #aaa;
             color: gray;
             border: none;
           }
@@ -166,28 +189,31 @@
         margin-top: 30px;
 
         button {
-          @include font(25px, 700);
+          @include font(18px, 700);
           @include button-normal;
-          width: 200px;
-          height: 50px;
+          @include box-shadow;
+          width: 100px;
+          height: 40px;
           margin-left: 30px;
           border-radius: 10px;
         }
 
         .reservation-completed {
           @include button-active;
+          margin: 0;
 
           &:disabled {
-            background: $color-darkgray;
+            background: #aaa;
             color: gray;
           }
         }
 
         .reservation-close {
-          @include position(absolute, $top: 0, $right: 0);
+          @include position(absolute, $top: -25px, $right: -20px);
           @include button-clear;
-          width: 50px;
-          font-size: 50px;
+          box-shadow: none;
+          width: 30px;
+          font-size: 25px;
         }
       }
     }

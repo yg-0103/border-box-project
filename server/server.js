@@ -43,6 +43,15 @@ app.post('/reserve', (req, res) => {
   res.send(reserveInformation);
 });
 
+app.delete('/reserve/:id', (req, res) => {
+  const id = req.params.id;
+  reserveInformation = reserveInformation.filter(
+    ({ reserveId }) => reserveId !== id
+  );
+
+  res.send(reserveInformation);
+});
+
 app.listen(3000, () => {
   console.log('Server listening on port 3000');
 });

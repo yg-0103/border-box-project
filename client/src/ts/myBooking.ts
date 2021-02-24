@@ -58,7 +58,7 @@ const myBooking = () => {
     '.myBooking_overlay'
   ) as HTMLElement).addEventListener('click', closeMybooking);
 
-  $myBookingForm.addEventListener('submit', async e => {
+  $myBookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!/\d{8}[A-C|a-c]/.test($myBookingInput.value)) {
