@@ -23,6 +23,12 @@
     weight: 500;
   }
 }
+@mixin font-heading-smallest {
+  font: {
+    size: 16px;
+    weight: 500;
+  }
+}
 @mixin font-content-large {
   font: {
     size: 24px;
@@ -38,6 +44,12 @@
 @mixin font-content-small {
   font: {
     size: 14px;
+    weight: 400;
+  }
+}
+@mixin font-content-smallest {
+  font: {
+    size: 12px;
     weight: 400;
   }
 }
