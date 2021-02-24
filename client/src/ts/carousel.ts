@@ -20,9 +20,11 @@ interface Boxoffice {
 
 let delayTime = 500;
 let currentSlide = 1;
+let lastActivatedNode: any = null;
+let isClickable: boolean = true;
 
 const boxofficeRender = (movieList: []) => {
-  $boxofficeList.innerHTML = movieList.map(({ title, image, director, rank }: Boxoffice, index: number) => `
+  $boxofficeList.innerHTML = movieList.map(({ title, image, director, rank }: Boxoffice) => `
     <li id="${rank}" ><img src="${image}" alt=""> 
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director}</p></div>
@@ -55,14 +57,14 @@ const getMovieList = async () => {
   // console.log(boxOfficeMovieList.movieList);
 };
 
-let lastActivatedNode: any =null;
-
 const setCurrentActive = () => {
   let index = currentSlide;
+
   if (index === 11) index = 1;
   if (index === 0) index = 10;
+  
   [...$boxofficeList.children].forEach($child => {
-      $child.classList.toggle('active', +$child.id === index);
+    $child.classList.toggle('active', +$child.id === index);
   });
 
   // let pseudoSlideIndex = currentSlide;
@@ -90,6 +92,8 @@ const setBoxofficeList = () => {
 };
 
 $boxofficeList.ontransitionend = () => {
+  isClickable = true;
+
   if (currentSlide === boxOfficeMovieList.movieList.length + 1) {
     delayTime = 0;
     currentSlide = 1;
@@ -106,29 +110,41 @@ $boxofficeList.ontransitionend = () => {
 };
 
 $nextBtn.onclick = () => {
-  currentSlide += 1;
+  if (isClickable) {
+    isClickable = false;
+    currentSlide += 1;
+    
+    setCurrentActive();
+    setBoxofficeList();
+  }
   // delayTime = 500;
 
   // if (currentSlide === boxOfficeMovieList.movieList.length) {
   //   delayTime = 0;
   //   currentSlide = 0;
   // }
-  setCurrentActive();
-  setBoxofficeList();
+  // setCurrentActive();
+  // setBoxofficeList();
   // boxofficeRender(boxOfficeMovieList.movieList);
   // console.log(boxOfficeMovieList.movieList);
 };
 
 $prevBtn.onclick = () => {
-  currentSlide -= 1;
+  if (isClickable) {
+    isClickable = false;
+    currentSlide -= 1;
+
+    setCurrentActive();
+    setBoxofficeList();
+  }
   // delayTime = 500;
 
   // if (currentSlide === -1) {
   //   // delayTime = 0;
   //   currentSlide = boxOfficeMovieList.movieList.length - 1;
   // }
-  setCurrentActive();
-  setBoxofficeList();
+  // setCurrentActive();
+  // setBoxofficeList();
   // boxofficeRender(boxOfficeMovieList.movieList);
 };
 
