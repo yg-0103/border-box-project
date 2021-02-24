@@ -21,7 +21,7 @@ const setReserveModal = (target: MovieList) => {
     .textContent as string) = target.movieNm;
 
   ((document.querySelector('.img-container figcaption') as HTMLElement)
-    .textContent as string) = `평점 ${target.userRating}`;
+    .textContent as string) = `네티즌 평점 ${target.userRating}`;
 
   ((document.querySelector('.img-container span') as HTMLElement)
     .textContent as string) = '⭐️'.repeat(Math.floor(+target.userRating / 2));

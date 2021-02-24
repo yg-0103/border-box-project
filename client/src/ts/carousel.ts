@@ -11,7 +11,9 @@ const today = `${todayYear}${('0' + todayMonth).slice(-2)}${(
   (todayDate - 1)
 ).slice(-2)}`;
 
-const $boxofficeList = document.querySelector('.boxoffice_list') as HTMLUListElement;
+const $boxofficeList = document.querySelector(
+  '.boxoffice_list'
+) as HTMLUListElement;
 const $prevBtn = document.querySelector('.prev') as HTMLElement;
 const $nextBtn = document.querySelector('.next') as HTMLElement;
 
@@ -29,7 +31,9 @@ let lastActivatedNode: any = null;
 let isClickable: boolean = true;
 
 const boxofficeRender = (movieList: []) => {
-  $boxofficeList.innerHTML = movieList.map(({ title, image, director, rank }: Boxoffice) => `
+  $boxofficeList.innerHTML = movieList
+    .map(
+      ({ title, image, director, rank, link }: Boxoffice) => `
     <li id="${rank}" ><img src="${image}" alt=""> 
 
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
@@ -40,14 +44,25 @@ const boxofficeRender = (movieList: []) => {
     )
     .join('');
 
+  const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(
+    true
+  );
+  const $clonedSecond = ($boxofficeList.querySelector(
+    'li:nth-child(2)'
+  ) as HTMLElement).cloneNode(true);
+  const $clonedThird = ($boxofficeList.querySelector(
+    'li:nth-child(3)'
+  ) as HTMLElement).cloneNode(true);
+  const $clonedLast = ($boxofficeList.lastElementChild as HTMLElement).cloneNode(
+    true
+  );
+  const $clonedSecondLast = ($boxofficeList.querySelector(
+    `li:nth-child(${movieList.length - 1})`
+  ) as HTMLElement).cloneNode(true);
+  const $clonedThirdLast = ($boxofficeList.querySelector(
+    `li:nth-child(${movieList.length - 2})`
+  ) as HTMLElement).cloneNode(true);
 
-  const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(true);
-  const $clonedSecond = ($boxofficeList.querySelector('li:nth-child(2)') as HTMLElement).cloneNode(true);
-  const $clonedThird = ($boxofficeList.querySelector('li:nth-child(3)') as HTMLElement).cloneNode(true);
-  const $clonedLast = ($boxofficeList.lastElementChild as HTMLElement).cloneNode(true);
-  const $clonedSecondLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 1})`) as HTMLElement).cloneNode(true);
-  const $clonedThirdLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 2})`) as HTMLElement).cloneNode(true);
-   
   lastActivatedNode = $boxofficeList.children[0];
   lastActivatedNode.classList.add('active');
 
@@ -66,7 +81,6 @@ const boxofficeRender = (movieList: []) => {
     'click',
     movieDetail.close
   );
-
 };
 
 const getMovieList = async () => {
@@ -82,8 +96,8 @@ const setCurrentActive = () => {
 
   if (index === 11) index = 1;
   if (index === 0) index = 10;
-  
-  [...$boxofficeList.children].forEach($child => {
+
+  Array.from($boxofficeList.children).forEach(($child) => {
     $child.classList.toggle('active', +$child.id === index);
   });
 
@@ -93,7 +107,7 @@ const setCurrentActive = () => {
   //   // $boxofficeList.children[pseudoSlideIndex+2].classList.add('active')
   //   pseudoSlideIndex = 1;
   // }
-  
+
   // if(currentSlide === 0) {
   //   pseudoSlideIndex = boxOfficeMovieList.movieList.length;
   // }
