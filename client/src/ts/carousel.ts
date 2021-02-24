@@ -1,11 +1,15 @@
 import axios, { AxiosResponse } from 'axios';
+import movieDetail from './detail';
 import { boxOfficeMovieList } from './store';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
 const todayDate = new Date().getDate();
 
-const today = `${todayYear}${('0' + todayMonth).slice(-2)}${('0' + (todayDate - 1)).slice(-2)}`;
+const today = `${todayYear}${('0' + todayMonth).slice(-2)}${(
+  '0' +
+  (todayDate - 1)
+).slice(-2)}`;
 
 const $boxofficeList = document.querySelector('.boxoffice_list') as HTMLElement;
 const $prevBtn = document.querySelector('.prev') as HTMLElement;
@@ -16,30 +20,54 @@ interface Boxoffice {
   image: string;
   director: string;
   rank: number;
+  link?: string;
 }
 
 let delayTime = 500;
 let currentSlide = 0;
 
 const boxofficeRender = (movieList: []) => {
-  $boxofficeList.innerHTML = movieList.map(({
-    title, image, director, rank
-  }: Boxoffice, index: number) => `
-    <li id="${rank}" class="${currentSlide === index ? 'active' : ''}"><img src="${image}" alt=""> 
+  $boxofficeList.innerHTML = movieList
+    .map(
+      ({ title, image, director, rank, link }: Boxoffice, index: number) => `
+    <li id="${rank}" class="${
+        currentSlide === index ? 'active' : ''
+      }"><img src="${image}" alt=""> 
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director}</p></div>
-    <button id="${rank}" class="movie-details">상세정보</button>
+    <button id="${rank}" class="movie-details" data-link="${link}">상세정보</button>
     <button id="${rank}" class="booking-btn">예매하기</button>
-    </li>`)
+    </li>`
+    )
     .join('');
 
-  const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(true);
-  const $clonedSecond = ($boxofficeList.querySelector('li:nth-child(2)') as HTMLElement).cloneNode(true);
-  const $clonedLast = ($boxofficeList.lastElementChild as HTMLElement).cloneNode(true);
-  const $clonedSecondLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 1})`) as HTMLElement).cloneNode(true);
+  const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(
+    true
+  );
+  const $clonedSecond = ($boxofficeList.querySelector(
+    'li:nth-child(2)'
+  ) as HTMLElement).cloneNode(true);
+  const $clonedLast = ($boxofficeList.lastElementChild as HTMLElement).cloneNode(
+    true
+  );
+  const $clonedSecondLast = ($boxofficeList.querySelector(
+    `li:nth-child(${movieList.length - 1})`
+  ) as HTMLElement).cloneNode(true);
 
   $boxofficeList.append($clonedFirst, $clonedSecond);
   $boxofficeList.prepend($clonedLast, $clonedSecondLast);
+
+  // movie detail part
+  document.querySelectorAll('.movie-details').forEach((button) => {
+    button.addEventListener('click', (e: Event) => {
+      const { link } = (e.currentTarget as HTMLButtonElement).dataset;
+      movieDetail.show(link);
+    });
+  });
+  (document.querySelector('.detail_overlay') as HTMLElement).addEventListener(
+    'click',
+    movieDetail.close
+  );
 };
 
 const getMovieList = async () => {
