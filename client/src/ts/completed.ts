@@ -1,5 +1,5 @@
 import { ReserveData } from './interface/ReserveData';
-// import deleteReserve from './ajax/ajaxReserveInfo';
+import deleteReserveInfo from './ajax/ajaxReserveInfo';
 
 const renderCompleted = (reserveData: ReserveData) => {
   // datas
@@ -62,7 +62,8 @@ const renderCompleted = (reserveData: ReserveData) => {
   (document.querySelector(
     '.completed_cancel'
   ) as HTMLButtonElement).addEventListener('click', () => {
-    // deleteReserve(reserveId);
+    deleteReserveInfo(reserveId);
+
     closeCompleted();
   });
   (document.querySelector(
