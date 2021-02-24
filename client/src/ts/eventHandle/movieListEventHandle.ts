@@ -10,18 +10,25 @@ const $movieList = document.querySelector('.boxoffice_list') as HTMLElement;
 const findSelectTarget = (id: string): MovieList => {
   const target = boxOfficeMovieList.movieList.find(({ rank }) => rank === id);
 
-  return target as unknown as MovieList;
+  return (target as unknown) as MovieList;
 };
 
 const setReserveModal = (target: MovieList) => {
-  (document.querySelector('.img-container img') as HTMLImageElement)
-    .src = target.image;
+  (document.querySelector('.img-container img') as HTMLImageElement).src =
+    target.image;
+
   ((document.querySelector('.reservation_movie-title') as HTMLElement)
     .textContent as string) = target.movieNm;
+
+  ((document.querySelector('.img-container figcaption') as HTMLElement)
+    .textContent as string) = `평점 ${target.userRating}`;
+
+  ((document.querySelector('.img-container span') as HTMLElement)
+    .textContent as string) = '⭐️'.repeat(Math.floor(+target.userRating / 2));
 };
 
 export default () => {
-  $movieList.addEventListener('click', e => {
+  $movieList.addEventListener('click', (e) => {
     const eventTarget = e.target as HTMLElement;
 
     if (!eventTarget.matches('.booking-btn')) return;
@@ -33,7 +40,6 @@ export default () => {
     calendarRender();
     setReserveModal(target);
 
-    document.querySelector('.reservation-container')
-      ?.classList.add('active');
+    document.querySelector('.reservation-container')?.classList.add('active');
   });
 };

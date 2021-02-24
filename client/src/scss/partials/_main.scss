@@ -197,8 +197,9 @@
 }
 
 .introduction {
-  height: 1230px;
-  background-color: $color-primary;
+  @include background-primary;
+  height: 1260px;
+
   padding-top: 50px;
 
   h2 {
