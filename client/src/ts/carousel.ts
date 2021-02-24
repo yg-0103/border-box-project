@@ -97,7 +97,7 @@ const setCurrentActive = () => {
   if (index === 11) index = 1;
   if (index === 0) index = 10;
 
-  [...$boxofficeList.children].forEach(($child) => {
+  Array.from($boxofficeList.children).forEach(($child) => {
     $child.classList.toggle('active', +$child.id === index);
   });
 

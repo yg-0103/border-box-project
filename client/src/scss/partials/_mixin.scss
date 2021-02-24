@@ -5,48 +5,56 @@
     weight: $weight;
   }
 }
+
 @mixin font-heading-large {
   font: {
     size: 30px;
     weight: 600;
   }
 }
+
 @mixin font-heading-medium {
   font: {
     size: 24px;
     weight: 500;
   }
 }
+
 @mixin font-heading-small {
   font: {
     size: 18px;
     weight: 500;
   }
 }
+
 @mixin font-heading-smallest {
   font: {
     size: 16px;
     weight: 500;
   }
 }
+
 @mixin font-content-large {
   font: {
     size: 24px;
     weight: 400;
   }
 }
+
 @mixin font-content-medium {
   font: {
     size: 18px;
     weight: 400;
   }
 }
+
 @mixin font-content-small {
   font: {
     size: 14px;
     weight: 400;
   }
 }
+
 @mixin font-content-smallest {
   font: {
     size: 12px;
@@ -59,10 +67,12 @@
   border: none;
   background-color: transparent;
 }
+
 @mixin button-normal {
   background-color: $color-white;
   border: 2px solid $color-primary;
 }
+
 @mixin button-active {
   border: none;
   background-color: $color-primary;
@@ -70,13 +80,11 @@
 }
 
 // layout
-@mixin position(
-  $position,
+@mixin position($position,
   $top: null,
   $right: null,
   $bottom: null,
-  $left: null
-) {
+  $left: null) {
   position: $position;
   top: $top;
   right: $right;
@@ -118,15 +126,19 @@
 @mixin background-primary {
   background-color: $color-primary;
 }
+
 @mixin background-white {
   background-color: $color-white;
 }
+
 @mixin background-black {
   background-color: $color-black;
 }
+
 @mixin background-modal {
   background-color: rgba($color: #fff, $alpha: 0.9);
 }
+
 @mixin background-overlay {
   background-color: rgba($color: #000000, $alpha: 0.8);
 }

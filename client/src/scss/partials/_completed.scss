@@ -5,16 +5,16 @@
   @include flex(center, center, column);
   border-radius: 10px;
   text-align: center;
-  padding: 50px 0 20px;
-  width: 560px;
+  padding: 30px 0 15px;
+  width: 480px;
   z-index: 100;
   display: none;
 
   &_movie-title {
-    @include font(36px, bold);
+    @include font-heading-large;
     letter-spacing: 2px;
-    padding: 20px 0 15px;
-    width: 480px;
+    padding: 12px 0 8px;
+    width: 320px;
     border-top: 3px solid $color-black;
     border-bottom: 3px solid $color-black;
   }
@@ -22,9 +22,9 @@
   &_reservation-number {
     @include font-content-medium;
     margin-top: 14px;
-
     .reservation-number {
-      @include font-heading-large;
+      @include font-heading-medium;
+      color: $color-darkgray;
       margin-top: 2px;
       display: block;
     }
@@ -32,27 +32,28 @@
 
   &_image {
     @include box-shadow;
-    margin-top: 16px;
-    width: 220px;
-    height: 320px;
+    margin-top: 12px;
+    width: 200px;
+    height: 295px;
   }
 
   &_reservation-details {
     @include font-content-medium;
-    margin-top: 14px;
+    margin-top: 10px;
     &_time {
-      margin-top: 8px;
+      margin-top: 6px;
     }
   }
 
   &_qrcode {
     @include font-heading-small;
     @include flex(center, center, column);
-    margin-top: 30px;
+    margin-top: 16px;
+    color: $color-darkgray;
 
     &_image {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       margin-top: 4px;
     }
   }
@@ -60,8 +61,8 @@
   &_cancel {
     @include font-heading-small;
     @include button-clear;
-    margin-top: 20px;
-    padding: 5px 10px;
+    margin-top: 16px;
+    padding: 4px 8px;
     color: red;
     &:active {
       transform: scale(0.95);
@@ -71,7 +72,7 @@
     @include position(absolute, $top: 8px, $right: 8px);
     @include button-clear;
     i {
-      font-size: 40px;
+      font-size: 36px;
     }
   }
 
