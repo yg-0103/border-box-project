@@ -41,7 +41,7 @@
   .btn-myBooking {
     @include button-clear;
     position: absolute;
-    right: 50px;
+    right: 5%;
     top: 50%;
     transform: translate3d(0, -50%, 0);
 
@@ -50,7 +50,7 @@
     }
 
     &_icon {
-      font-size: 48px;
+      font-size: 60px;
       color: #fff;
     }
   }
@@ -168,7 +168,6 @@
 //     right: 10px;
 //   }
 // }
-
 
 .carousel-control-container {
   position: absolute;

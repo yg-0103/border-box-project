@@ -1,5 +1,5 @@
 import { ReserveData } from './interface/ReserveData';
-// import deleteReserve from './ajax/ajaxReserveInfo';
+import { deleteReserveInfo } from './ajax/ajaxReserveInfo';
 
 const renderCompleted = (reserveData: ReserveData) => {
   // datas
@@ -43,7 +43,7 @@ const renderCompleted = (reserveData: ReserveData) => {
   setTimeout(() => {
     (document.querySelector(
       '.completed_qrcode_image'
-    ) as HTMLImageElement).src = `http://api.qrserver.com/v1/create-qr-code/?data=${qrData}&size=120x120`;
+    ) as HTMLImageElement).src = `http://api.qrserver.com/v1/create-qr-code/?data=${qrData}&size=100x100`;
   });
 
   (document.querySelector('.completed') as HTMLElement).classList.add('active');
@@ -62,8 +62,12 @@ const renderCompleted = (reserveData: ReserveData) => {
   (document.querySelector(
     '.completed_cancel'
   ) as HTMLButtonElement).addEventListener('click', () => {
-    // deleteReserve(reserveId);
-    closeCompleted();
+    const answer = window.confirm('예약을 취소하시겠습니까?');
+    if (answer) {
+      deleteReserveInfo(reserveId);
+      window.alert('예약이 취소되었습니다.');
+      closeCompleted();
+    }
   });
   (document.querySelector(
     '.completed_close'
