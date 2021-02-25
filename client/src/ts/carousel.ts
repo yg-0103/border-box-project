@@ -88,6 +88,7 @@ const boxofficeRender = (movieList: []) => {
 };
 
 const getMovieList = async () => {
+  
   const movieList = await (await axios.get(`/movielist/${today}`)).data;
   (document.querySelector('.spinner') as HTMLElement).style.display = 'none';
   boxofficeRender(movieList);
