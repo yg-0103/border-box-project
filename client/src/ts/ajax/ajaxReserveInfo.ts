@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { ReserveData } from '../interface/ReserveData';
 
+// eslint-disable-next-line no-unused-vars
 export const getReserve = async (callback:((reserveInfo: ReserveData[]) => void)) => {
   const { data: reserveInfo } = await axios.get('reserve');
+
   reserveInfo.sort((info1: ReserveData, info2: ReserveData) => {
-    if (info1.reserveId > info2.reserveId) {
-      return 1;
-    } if (info1.reserveId < info2.reserveId) {
-      return -1;
-    }
+    if (info1.reserveId > info2.reserveId) return 1;
+
+    if (info1.reserveId < info2.reserveId) return -1;
+
     return 0;
   });
 

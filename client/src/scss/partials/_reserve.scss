@@ -27,7 +27,7 @@
         rgba(228, 226, 226, 1) 50%,
         rgba(213, 213, 213, 1) 100%,
         rgba(217, 216, 216, 0) 100%);
-    border: 1px solid $color-black;
+    border: 10px double $color-black;
     border-radius: 15px;
     padding: 30px;
     display: flex;
@@ -70,7 +70,7 @@
       padding: 20px 0;
 
       .calendar {
-        @include margin-center(270px);
+        @include margin-center(290px);
         @include background-white;
         @include box-shadow;
         margin-bottom: 30px;
@@ -118,7 +118,7 @@
           display: grid;
           grid-template: repeat(1, 1fr) / repeat(7, 1fr);
           text-align: center;
-          padding: 10px 0 0;
+          padding: 10px 5px 0;
           color: $color-darkgray;
         }
 
@@ -129,6 +129,7 @@
           margin: 0 auto;
           text-align: center;
           border-top: none;
+          padding: 5px;
         }
 
         .main-container button {

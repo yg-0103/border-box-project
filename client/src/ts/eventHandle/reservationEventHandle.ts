@@ -54,6 +54,7 @@ export default () => {
     const eventTarget = e.target as HTMLElement;
 
     if (!eventTarget.matches('button')) return;
+
     state.today = `${state.year}-${state.month + 1}-${eventTarget.id}`;
     changeRadioDisabled();
     calendarRender();
