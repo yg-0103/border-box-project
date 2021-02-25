@@ -18,7 +18,7 @@ const setReserveModal = (target: MovieList) => {
     .src = target.image;
 
   ((document.querySelector('.reservation_movie-title') as HTMLElement)
-    .textContent as string) = target.movieNm;
+    .innerHTML as string) = target.title;
 
   ((document.querySelector('.img-container figcaption') as HTMLElement)
     .textContent as string) = `네티즌 평점 ${target.userRating}`;
