@@ -12,7 +12,10 @@
 
   &_heading {
     @include font-heading-medium;
-    @include background-primary;
+    // @include background-primary;
+    background: linear-gradient(to right, #4a00e0, #8e2de2, #4a00e0);
+    color: $color-white;
+    border: none;
     color: $color-white;
     position: absolute;
     width: 100%;
@@ -42,7 +45,10 @@
 
       &:focus {
         outline: none;
-        border: 3px solid $color-primary;
+        border: 10px solid;
+        border-image-slice: 1;
+        border-width: 3px;
+        border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
       }
     }
 
