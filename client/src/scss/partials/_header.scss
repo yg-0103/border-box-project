@@ -1,12 +1,8 @@
-.boxoffice_headline {
-  display: none;
-}
-
 .header {
   height: 220px;
   background-color: $color-black;
   padding-top: 20px;
-  border-bottom: 2px solid $color-gray;
+  border-bottom: 2px solid $color-primary;
   position: relative;
 
   .header_headline {
@@ -36,13 +32,32 @@
   .check-reservation {
     @include button-clear;
     position: absolute;
-    left: 5%;
+    right: 10%;
     top: 50%;
     transform: translate3d(0, -50%, 0);
 
     i {
-      font-size: 60px;
+      font-size: 40px;
       color: #fff;
+    }
+
+    &::after {
+      transition: all 0.3s;
+      content: '예약 현황';
+      display: block;
+      @include position(absolute, $top: 45px, $left: 50%);
+      transform: translate3d(-50%, 0, 0);
+      padding: 5px;
+      width: 80px;
+      border-radius: 5px;
+      // height: 30px;
+      background-color: rgba(70, 70, 70, 0.8);
+      color: $color-white;
+      @include font(18px, 400);
+      opacity: 0;
+    }
+    &:hover::after {
+      opacity: 1;
     }
   }
 
@@ -58,8 +73,26 @@
     }
 
     &_icon {
-      font-size: 60px;
+      font-size: 40px;
       color: #fff;
+    }
+    &::after {
+      transition: all 0.3s;
+      content: '나의 예약';
+      display: block;
+      @include position(absolute, $top: 45px, $left: 50%);
+      transform: translate3d(-50%, 0, 0);
+      padding: 5px;
+      width: 80px;
+      border-radius: 5px;
+      // height: 30px;
+      background-color: rgba(70, 70, 70, 0.8);
+      color: $color-white;
+      @include font(18px, 400);
+      opacity: 0;
+    }
+    &:hover::after {
+      opacity: 1;
     }
   }
 }

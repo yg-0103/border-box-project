@@ -3,6 +3,7 @@
   @include box-shadow(10px, 0.8);
   @include position-center(fixed);
   @include flex(center, center, column);
+  @include border-double();
   border-radius: 10px;
   text-align: center;
   padding: 20px 0 10px;
@@ -83,7 +84,7 @@
     }
   }
 
-  ~.completed_overlay {
+  ~ .completed_overlay {
     @include position(fixed, 0, 0, 0, 0);
     @include background-overlay;
     z-index: 99;
@@ -93,7 +94,7 @@
   &.active {
     display: flex;
 
-    ~.completed_overlay {
+    ~ .completed_overlay {
       display: flex;
     }
   }

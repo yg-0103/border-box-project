@@ -1,11 +1,10 @@
 .detail {
   @include position-center(fixed);
   @include flex-center;
-  @include background-black;
+  @include background-white;
+  @include border-double();
   width: 1000px;
   height: 85%;
-  padding: 10px;
-  border: 10px solid $color-white;
   border-radius: 10px;
   z-index: 100;
   display: none;
