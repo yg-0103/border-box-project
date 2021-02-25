@@ -21,23 +21,28 @@
     @include background-modal;
     @include box-shadow;
     background: rgb(255, 255, 255);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(233, 233, 233, 1) 25%, rgba(228, 226, 226, 1) 50%, rgba(213, 213, 213, 1) 100%, rgba(217, 216, 216, 0) 100%);
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(233, 233, 233, 1) 25%,
+        rgba(228, 226, 226, 1) 50%,
+        rgba(213, 213, 213, 1) 100%,
+        rgba(217, 216, 216, 0) 100%);
     border: 1px solid $color-black;
     border-radius: 15px;
     padding: 30px;
     display: flex;
 
-
     .img-container {
       @include font(16px, 700);
       width: 200px;
       text-align: center;
-      margin-right: 20px;
+      margin-right: 50px;
       padding-top: 20px;
 
       h3 {
         @include font(20px, 700);
         margin-bottom: 15px;
+        line-height: 1.2;
       }
 
       img {
@@ -46,6 +51,7 @@
         width: 100%;
         height: 70%;
         margin-bottom: 20px;
+        border-radius: 10px;
       }
 
       figcaption {
@@ -61,7 +67,7 @@
       display: flex;
       flex-flow: column;
       align-items: center;
-
+      padding: 20px 0;
 
       .calendar {
         @include margin-center(270px);
@@ -71,9 +77,11 @@
         border-radius: 10px;
         position: relative;
 
+
         .heading-container {
           @include flex(center, center, column);
           @include background-primary;
+          @include font(14px, 400);
           margin: 0 auto;
           padding: 10px 20px;
           position: relative;
@@ -90,7 +98,7 @@
           position: absolute;
           top: 50%;
           transform: translate3d(0, -50%, 0);
-          font-size: 30px;
+          font-size: 20px;
           color: $color-white;
           cursor: pointer;
         }
@@ -109,12 +117,12 @@
           display: grid;
           grid-template: repeat(1, 1fr) / repeat(7, 1fr);
           text-align: center;
-          padding: 10px 0;
+          padding: 10px 0 0;
           color: $color-darkgray;
         }
 
         .main-container {
-          @include font-content-medium;
+          @include font-content-smallest;
           display: grid;
           grid-template-columns: repeat(7, 1fr);
           margin: 0 auto;
@@ -124,7 +132,6 @@
 
         .main-container button {
           @include button-clear;
-          @include font-content-smallest;
           padding: 12px;
           border-radius: 50%;
           transition: background-color 0.2s;
@@ -165,7 +172,6 @@
           border-radius: 10px;
           cursor: pointer;
           transition: 0.3s;
-
         }
 
         input {

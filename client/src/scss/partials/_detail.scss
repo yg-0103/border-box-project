@@ -2,9 +2,9 @@
   @include position-center(fixed);
   @include flex-center;
   @include background-white;
-  width: 70%;
+  width: 1000px;
   height: 85%;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   z-index: 100;
   display: none;

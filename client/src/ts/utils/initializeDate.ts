@@ -1,4 +1,4 @@
-import { state } from './store';
+import { state } from '../store';
 
 export const initializeDate = () => {
   const date = new Date();
