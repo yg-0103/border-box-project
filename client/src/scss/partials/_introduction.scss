@@ -1,10 +1,19 @@
 .introduction {
-  height: 760px;
-  background-color: $color-primary;
-  padding-top: 30px;
+  height: 900px;
+  background-color: #111111ec;
+  // background-color: #4b00e0ec;
+  padding-top: 100px;
+  position: relative;
 
+  &::before {
+    content: '';
+    @include position(absolute, 0, 0, 0, 0);
+    background-image: url('../img/background1.jpg');
+    background-size: cover;
+    z-index: -5;
+  }
   h2 {
-    @include font-heading-medium;
+    @include font-heading-large;
     color: $color-white;
     font-weight: 700;
     text-align: center;
@@ -17,13 +26,14 @@
   .introduction_image-container {
     width: 900px;
     height: 640px;
-    margin: 10px auto 40px;
+    margin: 40px auto 40px;
     position: relative;
   }
 
   .private-container {
     animation: showRight 1.8s;
     animation-fill-mode: forwards;
+    display: none;
   }
 
   img {
@@ -33,14 +43,14 @@
   }
 
   figcaption {
-    @include font(25px, 700);
+    @include font(30px, 700);
     color: $color-white;
     width: 480px;
     position: absolute;
   }
 
   span {
-    @include font-content-small;
+    @include font-content-medium;
     display: block;
     width: 460px;
     line-height: 25px;
@@ -54,13 +64,13 @@
   }
 
   .private-text {
-    top: 180px;
-    right: 50px;
+    text-align: right;
+    top: 130px;
+    right: 70px;
 
     span {
-      text-align: right;
-      width: 275px;
-      margin-left: 170px;
+      width: 400px;
+      margin-left: 80px;
     }
   }
 
@@ -70,6 +80,7 @@
     right: 0;
     animation: showUp 2s;
     animation-fill-mode: forwards;
+    display: none;
   }
 
   .premium-text {
@@ -77,6 +88,7 @@
     bottom: 60px;
     animation: showUpText 2.5s;
     animation-fill-mode: forwards;
+    display: none;
   }
 }
 

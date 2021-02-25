@@ -10,13 +10,24 @@
 
 .boxoffice-container {
   position: relative;
-  background-color: $color-black;
+  background-color: #040404;
   opacity: 0.95;
-  height: 470px;
+  height: 570px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid $color-primary;
+
+  .boxoffice_headline {
+    @include font-heading-small;
+    color: $color-gray;
+    margin-top: 40px;
+    text-align: center;
+    width: 100px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $color-gray;
+  }
 
   .boxoffice_carousel {
     position: relative;
@@ -121,11 +132,11 @@
 
 .carousel-control-container {
   position: absolute;
-  top: 40%;
+  top: 45%;
   transform: translateY(-50%);
   display: flex;
   justify-content: space-between;
-  width: 1300px;
+  width: 1400px;
   right: 50%;
   transform: translateX(50%);
 
