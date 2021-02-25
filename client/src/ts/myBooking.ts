@@ -2,6 +2,7 @@ import axios from 'axios';
 import renderCompleted from './completed';
 
 const myBooking = () => {
+  // DOM Elements
   const $btnMyBooking = document.querySelector(
     '.btn-myBooking'
   ) as HTMLButtonElement;
@@ -17,6 +18,7 @@ const myBooking = () => {
     '.myBooking_close'
   ) as HTMLButtonElement;
 
+  // Functions
   const clearInput = () => {
     $myBookingInput.value = '';
   };
@@ -52,15 +54,17 @@ const myBooking = () => {
     }
   };
 
+  // Event Listeners
   $btnMyBooking.addEventListener('click', openMyBooking);
+
   $closeBtn.addEventListener('click', closeMybooking);
+
   (document.querySelector(
     '.myBooking_overlay'
   ) as HTMLElement).addEventListener('click', closeMybooking);
 
   $myBookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     if (!/\d{8}[A-C|a-c]/.test($myBookingInput.value)) {
       showInvalid('예약 번호의 형식에 맞지 않습니다. (예: 20201225A)');
       return;
@@ -69,10 +73,10 @@ const myBooking = () => {
     const reserveData = await getReserveData();
     if (!reserveData) {
       showInvalid('해당 예약 번호에 대한 정보가 없습니다.');
-    } else {
-      renderCompleted(reserveData);
-      closeMybooking();
+      return;
     }
+    renderCompleted(reserveData);
+    closeMybooking();
   });
 };
 
