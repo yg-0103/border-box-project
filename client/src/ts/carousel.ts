@@ -69,7 +69,9 @@ const boxofficeRender = (movieList: []) => {
 };
 
 const getMovieList = async () => {
+  
   const movieList = await (await axios.get(`/movielist/${today}`)).data;
+
   boxofficeRender(movieList);
   boxOfficeMovieList.movieList = movieList;
   $boxofficeList.style.width = `${(movieList.length + 6) * 310}px`;
