@@ -15,11 +15,11 @@ const ajaxNaverMovie = axios.create({
   },
 });
 
-const getNaverMovies = async (serchWord) => {
+const getNaverMovies = async serchWord => {
   try {
     const {
       data: { items: movies },
-    } = await ajaxNaverMovie.get(encodeURI(`${serchWord}&display=3`));
+    } = await ajaxNaverMovie.get(encodeURI(`${serchWord}&display=2`));
 
     return movies;
   } catch (e) {
@@ -27,7 +27,7 @@ const getNaverMovies = async (serchWord) => {
   }
 };
 
-const getBoxOfficeMovies = async (today) => {
+const getBoxOfficeMovies = async today => {
   try {
     const {
       data: {
@@ -40,15 +40,12 @@ const getBoxOfficeMovies = async (today) => {
       rank,
     }));
 
-    const naverMovies = await Promise.all(
-      movieNameAndRank.map(({ movieNm }) => getNaverMovies(movieNm))
-    );
+    console.log(movieNameAndRank);
+    const naverMovies = await Promise.all(movieNameAndRank.map(({ movieNm }) => getNaverMovies(movieNm)));
 
     const boxOfficeMovie = naverMovies
       .flat()
-      .filter(
-        ({ title, userRating }) => isSameTitle(title) && userRating !== '0.00'
-      );
+      .filter(({ title, userRating }) => isSameTitle(title) && userRating !== '0.00');
 
     return {
       boxOfficeMovie,

@@ -5,7 +5,7 @@ export const getReserveInfo = async (reserveId: string) => {
   try {
     const reserveInfo = await axios.get(`/reserve/${reserveId}`);
 
-    // return reserveInfo;
+    return reserveInfo;
   } catch (e) {
     throw new Error('failed get reserve info');
   }
@@ -17,7 +17,7 @@ export const postReserveInfo = async (reserveData: ReserveData) => {
       ...reserveData,
     });
 
-    // return reserveInfo.map(({ reserveId }: { reserveId: string}) => reserveId);
+    return reserveInfo.map(({ reserveId }: { reserveId: string }) => reserveId);
   } catch (e) {
     throw new Error('failed post reserveInfo');
   }
@@ -26,6 +26,8 @@ export const postReserveInfo = async (reserveData: ReserveData) => {
 export const deleteReserveInfo = async (reserveId: string) => {
   try {
     const reserveInfo = await axios.delete(`/reserve/${reserveId}`);
+
+    return reserveInfo;
   } catch (e) {
     throw new Error('failed delete reserve info');
   }

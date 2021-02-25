@@ -14,7 +14,8 @@ export const changeRadioDisabled = async () => {
 
     Array.from($radio).forEach(radio => {
       radio.disabled = activeTime
-        .includes(radio.parentNode?.textContent?.trim());
+        .includes(radio.parentNode?.textContent
+          ?.trim());
     });
   } catch (e) {
     throw new Error('failed get reserveInfo');

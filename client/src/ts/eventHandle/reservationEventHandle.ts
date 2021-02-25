@@ -1,10 +1,7 @@
 import { reserveData, state } from '../store';
 import renderCompleted from '../completed';
 import { calendarRender } from '../calendar/calendarRender';
-import {
-  setStateMonthAndDate,
-  setStateMonthAndYear,
-} from '../calendar/setCaledarState';
+import { setStateMonthAndDate, setStateMonthAndYear } from '../calendar/setCaledarState';
 import { setReserveInfo } from '../setReserveInfo';
 import { postReserveInfo } from '../ajax/ajaxReserveInfo';
 import { changeRadioDisabled } from '../ajax/changeRadioDisabled';
@@ -14,9 +11,7 @@ const $btnNext = document.querySelector('.btn-next') as HTMLButtonElement;
 const $btnPrev = document.querySelector('.btn-prev') as HTMLButtonElement;
 const $radioSection = document.querySelector('.radio-section') as HTMLElement;
 const $reserveBtnGroup = document.querySelector('.btn-group') as HTMLElement;
-const $calendarContainer = document.querySelector(
-  '.main-container'
-) as HTMLElement;
+const $calendarContainer = document.querySelector('.main-container') as HTMLElement;
 
 export const setBtnDisplay = (btnPrev: string, btnNext: string): void => {
   $btnNext.style.display = btnNext;
@@ -24,9 +19,9 @@ export const setBtnDisplay = (btnPrev: string, btnNext: string): void => {
 };
 
 const findCheckedEl = () => {
-  const checkedEl = Array.from($radioSection.querySelectorAll('input')).find(
-    (radio) => radio.checked
-  ) as HTMLInputElement;
+  const checkedEl = Array.from($radioSection.querySelectorAll('input')) //
+    .find(radio => radio.checked) as HTMLInputElement;
+
   checkedEl.checked = false;
 };
 
@@ -54,7 +49,7 @@ export default () => {
 
   $btnPrev.addEventListener('click', prevAndNextCalendarHandle);
 
-  $calendarContainer.addEventListener('click', (e) => {
+  $calendarContainer.addEventListener('click', e => {
     const eventTarget = e.target as HTMLElement;
 
     if (!eventTarget.matches('button')) return;
@@ -63,22 +58,18 @@ export default () => {
     calendarRender();
   });
 
-  $radioSection.addEventListener('change', (e) => {
+  $radioSection.addEventListener('change', e => {
     const eventTarget = e.target as HTMLElement;
 
-    (document.querySelector(
-      '.reservation-completed'
-    ) as HTMLButtonElement).disabled = false;
+    (document.querySelector('.reservation-completed') as HTMLButtonElement).disabled = false;
 
     $radioSection.querySelector('.active')?.classList.remove('active');
     eventTarget.closest('.radio-container')?.classList.add('active');
 
-    state.time = $radioSection
-      .querySelector('.active')
-      ?.textContent?.trim() as StateTime;
+    state.time = $radioSection.querySelector('.active')?.textContent?.trim() as StateTime;
   });
 
-  $reserveBtnGroup.addEventListener('click', (e) => {
+  $reserveBtnGroup.addEventListener('click', e => {
     const eventTarget = e.target as HTMLElement;
 
     if (eventTarget.matches('.reservation-completed')) {
@@ -86,17 +77,11 @@ export default () => {
       postReserveInfo(reserveData);
       renderCompleted(reserveData);
 
-      (document.querySelector('.completed') as HTMLElement).classList.add(
-        'active'
-      );
+      (document.querySelector('.completed') as HTMLElement).classList.add('active');
     }
 
-    (document.querySelector(
-      '.reservation-container'
-    ) as HTMLElement).classList.remove('active');
-    (document.querySelector(
-      '.reservation-completed'
-    ) as HTMLButtonElement).disabled = true;
+    (document.querySelector('.reservation-container') as HTMLElement).classList.remove('active');
+    (document.querySelector('.reservation-completed') as HTMLButtonElement).disabled = true;
 
     findCheckedEl();
   });
