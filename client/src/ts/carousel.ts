@@ -36,7 +36,6 @@ const boxofficeRender = (movieList: []) => {
     .map(
       ({ title, image, director, rank, link }: Boxoffice) => `
     <li id="${rank}" ><img src="${image}" alt=""> 
-
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director.substring(
       0,
@@ -101,11 +100,13 @@ const boxofficeRender = (movieList: []) => {
 
 const getMovieList = async () => {
   const movieList = await (await axios.get(`/movielist/${today}`)).data;
+
   (document.querySelector('.spinner') as HTMLElement).style.display = 'none';
+
   boxofficeRender(movieList);
   boxOfficeMovieList.movieList = movieList;
   $boxofficeList.style.width = `${(movieList.length + 6) * 310}px`;
-  console.log(boxOfficeMovieList.movieList);
+  // console.log(boxOfficeMovieList.movieList);
 };
 
 const setCurrentActive = () => {

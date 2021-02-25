@@ -1,77 +1,3 @@
-// .reservation-container {
-//   display: none;
-// }
-
-.boxoffice_headline {
-  display: none;
-}
-
-.header {
-  height: 220px;
-  background-color: $color-black;
-  padding-top: 20px;
-  border-bottom: 2px solid $color-gray;
-  position: relative;
-
-  .header_headline {
-    width: 600px;
-    height: 180px;
-    margin: 0px auto;
-    text-align: center;
-    padding: 40px 50px;
-  }
-
-  img {
-    width: 360px;
-  }
-
-  span {
-    display: block;
-    color: $color-white;
-
-    font: {
-      size: 26px;
-      weight: 900;
-    }
-
-    margin: 16px auto 0px;
-  }
-
-  .kakao-login {
-    @include position(absolute, $top: 50%, $right: 10%);
-    transform: translate3d(0, -50%, 0);
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-
-    img {
-      @include position(absolute, $top: 0, $left: 0);
-      border-radius: 10px;
-
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  .btn-myBooking {
-    @include button-clear;
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translate3d(0, -50%, 0);
-
-    &:active {
-      transform: scale(0.95) translate3d(0, -50%, 0);
-    }
-
-    &_icon {
-      font-size: 60px;
-      color: #fff;
-    }
-  }
-}
-
 .spinner {
   @include position(absolute, $top: 50%, $left: 50%);
   transform: translate3d(-50%, -50%, 0);
@@ -86,8 +12,7 @@
   position: relative;
   background-color: $color-black;
   opacity: 0.95;
-  height: 460px;
-  // overflow: hidden;
+  height: 470px;
 
   .boxoffice_carousel {
     position: relative;
@@ -95,7 +20,7 @@
     width: 1484px;
     overflow: hidden;
     margin: 0 auto;
-    transform: scale(0.75); // padding-left: 48px;
+    transform: scale(0.8);
     z-index: 999;
   }
 
@@ -104,9 +29,6 @@
     --duration: 0;
     display: flex;
     flex-flow: row nowrap;
-    // width: 2400px;
-    // width: 100%;
-    // padding-left: 70px;
     justify-content: space-between;
     transition: transform calc(var(--duration) * 1ms) ease-out;
     transform: translate3D(calc(var(--currentSlide) * -316px), 0, 0);
@@ -117,7 +39,6 @@
       height: 300px;
       color: $color-white;
       margin: 55px 0;
-      // padding: 0 50px;
       transition: all 500ms ease-out;
       cursor: pointer;
 
@@ -159,19 +80,26 @@
       width: 220px;
       left: 50%;
       transform: translateX(-50%);
-      bottom: -45px;
+      bottom: -50px;
       text-align: center;
 
       .movie-details,
       .booking-btn {
-        padding: 5px 10px;
-        border: none;
+        padding: 8px 12px;
+        margin: 0 5px;
+        border: 1px solid $color-white;
+        color: $color-white;
+        background-color: $color-darkgray;
         outline: none;
 
         &:hover {
-          background-color: $color-primary;
-          color: $color-white;
+          font-weight: 700;
         }
+      }
+
+      .booking-btn {
+        border: 1px solid $color-white;
+        background-color: $color-primary;
       }
     }
   }
@@ -179,7 +107,6 @@
 
 .carousel-control-container {
   position: absolute;
-  // top: 0;
   top: 40%;
   transform: translateY(-50%);
   display: flex;
@@ -190,7 +117,6 @@
 
   .prev,
   .next {
-    cursor: pointer;
     font-size: 60px;
     color: $color-white;
     background-color: transparent;
@@ -200,78 +126,5 @@
     &:focus {
       outline: none;
     }
-  }
-}
-
-.introduction {
-  height: 760px;
-  background-color: $color-primary;
-  padding-top: 30px;
-
-  h2 {
-    @include font-heading-medium;
-    color: $color-white;
-    text-align: center;
-    width: 360px;
-    height: 50px;
-    margin: auto;
-    border-bottom: 2px solid $color-gray;
-  }
-
-  .introduction_image-container {
-    width: 900px;
-    height: 640px;
-    margin: 10px auto 40px;
-    // transform: scale(0.8);
-    position: relative;
-  }
-
-  img {
-    width: 660px;
-    height: 400px;
-    transform: scale(0.8);
-  }
-
-  figcaption {
-    @include font(25px, 700);
-    color: $color-white;
-    width: 480px;
-    position: absolute;
-  }
-
-  span {
-    @include font-content-small;
-    display: block;
-    width: 460px;
-    line-height: 25px;
-    margin-top: 10px;
-  }
-
-  .private-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .private-text {
-    top: 180px;
-    right: 40px;
-
-    span {
-      text-align: right;
-      width: 275px;
-      margin-left: 170px;
-    }
-  }
-
-  .premium-img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
-
-  .premium-text {
-    left: 70px;
-    bottom: 60px;
   }
 }
