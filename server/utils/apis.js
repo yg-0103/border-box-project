@@ -1,7 +1,7 @@
 const axios = require('axios');
 const isSameTitle = require('./isSameTitle');
 
-const KOBIS_KEY = '944ccabbee050d715b5a71b81640b460';
+const KOBIS_KEY = '1d8cffa34f04481050971e0ddcbebe2b';
 const KOBIS_URL = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${KOBIS_KEY}&targetDt=`;
 const KOBIS_MOVIE_INFO_URL = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${KOBIS_KEY}&movieCd=`;
 const NAVER_URL = `https://openapi.naver.com/v1/search/movie.json?query=`;
@@ -16,7 +16,7 @@ const ajaxNaverMovie = axios.create({
   },
 });
 
-const getNaverMovies = async serchWord => {
+const getNaverMovies = async (serchWord) => {
   try {
     const {
       data: { items: movies },
@@ -28,7 +28,7 @@ const getNaverMovies = async serchWord => {
   }
 };
 
-const getMovieInfo = async movieCd => {
+const getMovieInfo = async (movieCd) => {
   try {
     const {
       data: {
@@ -44,7 +44,7 @@ const getMovieInfo = async movieCd => {
   }
 };
 
-const getBoxOfficeMovies = async today => {
+const getBoxOfficeMovies = async (today) => {
   try {
     const {
       data: {
@@ -52,25 +52,33 @@ const getBoxOfficeMovies = async today => {
       },
     } = await axios.get(`${KOBIS_URL}${today}`);
 
-    const movieNameAndRank = dailyBoxOfficeList.map(({ movieNm, rank, movieCd }) => ({
-      movieNm,
-      rank,
-      movieCd,
-    }));
+    const movieNameAndRank = dailyBoxOfficeList.map(
+      ({ movieNm, rank, movieCd }) => ({
+        movieNm,
+        rank,
+        movieCd,
+      })
+    );
 
-    const actorInfo = await Promise.all(movieNameAndRank.map(({ movieCd }) => getMovieInfo(movieCd)));
+    const actorInfo = await Promise.all(
+      movieNameAndRank.map(({ movieCd }) => getMovieInfo(movieCd))
+    );
 
-    const naverMovies = await Promise.all(movieNameAndRank.map(({ movieNm }) => getNaverMovies(movieNm)));
+    const naverMovies = await Promise.all(
+      movieNameAndRank.map(({ movieNm }) => getNaverMovies(movieNm))
+    );
 
-    const boxOfficeMovie = naverMovies.flat().filter(({ title, userRating, actor }) => {
-      return (
-        isSameTitle(title) &&
-        userRating !== '0.00' &&
-        (actorInfo.includes(actor.split('|')[0]) ||
-          actorInfo.includes(actor.split('|')[1]) ||
-          actorInfo.includes(actor.split('|')[2]))
-      );
-    });
+    const boxOfficeMovie = naverMovies
+      .flat()
+      .filter(({ title, userRating, actor }) => {
+        return (
+          isSameTitle(title) &&
+          userRating !== '0.00' &&
+          (actorInfo.includes(actor.split('|')[0]) ||
+            actorInfo.includes(actor.split('|')[1]) ||
+            actorInfo.includes(actor.split('|')[2]))
+        );
+      });
 
     return {
       boxOfficeMovie,

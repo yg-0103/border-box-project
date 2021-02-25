@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import movieDetail from './detail';
 import { boxOfficeMovieList } from './store';
-import trailer from './trailer';
+import movieTrailer from './trailer';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
@@ -71,32 +71,6 @@ const boxofficeRender = (movieList: []) => {
   $boxofficeList.append($clonedFirst, $clonedSecond, $clonedThird);
   $boxofficeList.prepend($clonedThirdLast, $clonedSecondLast, $clonedLast);
   // console.log(boxOfficeMovieList.movieList);
-
-  // movie detail part
-  document.querySelectorAll('.movie-details').forEach((button) => {
-    button.addEventListener('click', (e: Event) => {
-      const { link } = (e.currentTarget as HTMLButtonElement).dataset;
-      movieDetail.show(link);
-    });
-  });
-  (document.querySelector('.detail_overlay') as HTMLElement).addEventListener(
-    'click',
-    movieDetail.close
-  );
-
-  // trailer part
-  document.querySelectorAll('.boxoffice_list li').forEach((movieItem) => {
-    movieItem.addEventListener('click', (e: Event) => {
-      if ((e.target as HTMLElement).matches('button')) return;
-      const title = (movieItem.querySelector('.movie-title') as HTMLElement)
-        .textContent as string;
-      trailer.show(title);
-    });
-  });
-  (document.querySelector('.trailer_overlay') as HTMLElement).addEventListener(
-    'click',
-    trailer.close
-  );
 };
 
 const getMovieList = async () => {
@@ -104,9 +78,13 @@ const getMovieList = async () => {
 
   (document.querySelector('.spinner') as HTMLElement).style.display = 'none';
 
-  boxofficeRender(movieList);
+  await boxofficeRender(movieList);
   boxOfficeMovieList.movieList = movieList;
   $boxofficeList.style.width = `${(movieList.length + 6) * 310}px`;
+
+  movieDetail();
+  movieTrailer();
+
   // console.log(boxOfficeMovieList.movieList);
 };
 

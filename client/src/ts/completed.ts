@@ -2,7 +2,7 @@ import { ReserveData } from './interface/ReserveData';
 import { deleteReserveInfo } from './ajax/ajaxReserveInfo';
 
 const renderCompleted = (reserveData: ReserveData) => {
-  // datas
+  // Datas
   const {
     movieImg,
     movieTitle,
@@ -17,7 +17,7 @@ const renderCompleted = (reserveData: ReserveData) => {
 
   const qrData = `예약 번호: ${reserveId} / 영화 제목: ${movieTitle} / 예약 날짜: ${reserveDate} / 예약 시간: ${reserveTime}`;
 
-  // runtime
+  // Rendering on Runtime
   (document.querySelector('.completed') as HTMLElement).innerHTML = `
     <h3 class="completed_movie-title">${movieTitle}</h3>
       <div class="completed_reservation-number">
@@ -48,27 +48,30 @@ const renderCompleted = (reserveData: ReserveData) => {
 
   (document.querySelector('.completed') as HTMLElement).classList.add('active');
 
-  // functions
+  // Functions
   const closeCompleted = () => {
     (document.querySelector('.completed') as HTMLElement).classList.remove(
       'active'
     );
   };
-  // event listeners
+
+  const cancelReserve = () => {
+    if (window.confirm('예약을 취소하시겠습니까?')) {
+      deleteReserveInfo(reserveId);
+      window.alert('예약이 취소되었습니다.');
+      closeCompleted();
+    }
+  };
+
+  // Event Listeners
   (document.querySelector(
     '.completed_overlay'
   ) as HTMLElement).addEventListener('click', closeCompleted);
 
   (document.querySelector(
     '.completed_cancel'
-  ) as HTMLButtonElement).addEventListener('click', () => {
-    const answer = window.confirm('예약을 취소하시겠습니까?');
-    if (answer) {
-      deleteReserveInfo(reserveId);
-      window.alert('예약이 취소되었습니다.');
-      closeCompleted();
-    }
-  });
+  ) as HTMLButtonElement).addEventListener('click', cancelReserve);
+
   (document.querySelector(
     '.completed_close'
   ) as HTMLButtonElement).addEventListener('click', closeCompleted);
