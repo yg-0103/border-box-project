@@ -9,6 +9,11 @@
   z-index: 100;
   display: none;
 
+  &_spinner {
+    @include position-center(absolute);
+    font-size: 100px;
+  }
+
   iframe {
     width: 100%;
     height: 100%;

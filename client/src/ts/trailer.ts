@@ -1,10 +1,15 @@
+declare let gapi: any;
+
 const trailer = (() => {
-  const API_KEY = 'AIzaSyDY5xWukKRJb3ijn5wv0WumkzaWAzwHWik';
+  const API_KEY = 'AIzaSyAe4GE9jSB3NeTGPGVwk2LNxqDwjRkHg4c';
 
   const $trailer = document.querySelector('.trailer') as HTMLElement;
-  const $trailerVideo = document.querySelector(
-    '.trailer video'
+  const $trailerIframe = document.querySelector(
+    '.trailer iframe'
   ) as HTMLVideoElement;
+  const $trailerSpinner = document.querySelector(
+    '.trailer_spinner'
+  ) as HTMLElement;
 
   const getTrailerLink = async (movieTitle: string) => {
     gapi.client.setApiKey(API_KEY);
@@ -18,11 +23,14 @@ const trailer = (() => {
     });
 
     const { videoId } = data.result.items[0].id;
-    const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
+    const youtubeUrl = `https://www.youtube.com/embed/${videoId}`;
 
-    console.log(youtubeUrl);
-    // cross origin error
-    document.querySelector('.trailer video').src = youtubeUrl;
+    (document.querySelector(
+      '.trailer iframe'
+    ) as HTMLVideoElement).src = youtubeUrl;
+
+    $trailerSpinner.style.display = 'none';
+
   };
 
   return {
@@ -30,12 +38,12 @@ const trailer = (() => {
       gapi.load('client:auth2', () => {
         getTrailerLink(movieTitle);
       });
-      $trailerVideo.src = movieTitle;
       $trailer.classList.add('active');
     },
     close() {
-      $trailerVideo.src = '';
+      $trailerIframe.src = '';
       $trailer.classList.remove('active');
+      $trailerSpinner.style.display = 'block';
     },
   };
 })();
