@@ -80,12 +80,13 @@
 
         .heading-container {
           @include flex(center, center, column);
-          @include background-primary;
+          // @include background-primary;
           @include font(14px, 400);
           margin: 0 auto;
           padding: 10px 20px;
           position: relative;
           color: $color-white;
+          background: linear-gradient(to right, #8e2de2, #4a00e0, #8e2de2);
 
           border-top: {
             left-radius: 10px;

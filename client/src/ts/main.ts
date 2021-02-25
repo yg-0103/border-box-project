@@ -4,7 +4,9 @@ import myBooking from './myBooking';
 import scrollGoToTop from './scrollGoToTop';
 import { changeRadioDisabled } from './ajax/changeRadioDisabled';
 import movieListEventHandle from './eventHandle/movieListEventHandle';
+import reserveInfoEventHandle from './eventHandle/reserveInfoEventHandle';
 
+reserveInfoEventHandle();
 scrollGoToTop();
 getMovieList();
 movieListEventHandle();
