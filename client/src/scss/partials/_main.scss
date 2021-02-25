@@ -59,13 +59,22 @@
       }
     }
 
+    .movie-rank {
+      @include font-heading-large;
+      color: $color-white;
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      text-shadow: 2px 4px 2px $color-darkgray;
+    }
+
     .movie-info {
       height: 70px;
       width: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
-      background: #3636368f;
+      background: #161616cc;
       padding-top: 13px;
       padding-left: 5px;
       @include flex($justify: center, $direction: column);
