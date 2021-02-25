@@ -20,13 +20,15 @@
   }
 
   &_reservation-number {
-    @include font-content-small;
+    @include font-content-smallest;
     margin-top: 10px;
     .reservation-number {
       @include font-heading-small;
       color: $color-darkgray;
       margin-top: 2px;
       display: block;
+      user-select: text;
+      font-weight: 700;
     }
   }
 
@@ -46,7 +48,7 @@
   }
 
   &_qrcode {
-    @include font-heading-small;
+    @include font-content-small;
     @include flex(center, center, column);
     margin-top: 12px;
     color: $color-darkgray;
