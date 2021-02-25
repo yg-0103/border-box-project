@@ -1,5 +1,5 @@
 .spinner {
-  @include position (absolute, $top: 50%, $left: 50%);
+  @include position(absolute, $top: 50%, $left: 50%);
   transform: translate3d(-50%, -50%, 0);
 
   img {
@@ -43,6 +43,7 @@
       color: $color-white;
       margin: 55px 0;
       transition: all 500ms ease-out;
+      cursor: pointer;
 
       &.active {
         transform: scale3d(1.3, 1.3, 1.2);

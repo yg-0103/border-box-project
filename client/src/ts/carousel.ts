@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import movieDetail from './detail';
 import { boxOfficeMovieList } from './store';
 import throttle from './utils/throttle';
+import trailer from './trailer';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
@@ -32,7 +33,8 @@ const boxofficeRender = (movieList: []) => {
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director.substring(0, director.length - 1)}</p></div>
     <div class="movie-control"><button id="${rank}" class="movie-details" data-link="${link}">상세정보</button>
-    <button id="${rank}" class="booking-btn">예매하기</button></div></li>`).join('');
+    <button id="${rank}" class="booking-btn">예매하기</button></div></li>`
+    ).join('');
 
   const $clonedFirst = ($boxofficeList.firstElementChild as HTMLElement).cloneNode(true);
   const $clonedSecond = ($boxofficeList.querySelector('li:nth-child(2)') as HTMLElement).cloneNode(true);
@@ -49,7 +51,7 @@ const boxofficeRender = (movieList: []) => {
   // console.log(boxOfficeMovieList.movieList);
 
   // movie detail part
-  document.querySelectorAll('.movie-details').forEach(button => {
+  document.querySelectorAll('.movie-details').forEach((button) => {
     button.addEventListener('click', (e: Event) => {
       const { link } = (e.currentTarget as HTMLButtonElement).dataset;
       movieDetail.show(link);
@@ -58,6 +60,19 @@ const boxofficeRender = (movieList: []) => {
   (document.querySelector('.detail_overlay') as HTMLElement).addEventListener(
     'click',
     movieDetail.close
+  );
+
+  // trailer part
+  document.querySelectorAll('.boxoffice_list li').forEach((movieItem) => {
+    movieItem.addEventListener('click', (e: Event) => {
+      if (e.target.matches('button')) return;
+      const title = e.currentTarget.querySelector('.movie-title b').textContent;
+      trailer.show(title);
+    });
+  });
+  (document.querySelector('.trailer_overlay') as HTMLElement).addEventListener(
+    'click',
+    trailer.close
   );
 };
 
@@ -78,7 +93,7 @@ const setCurrentActive = () => {
   if (index === 11) index = 1;
   if (index === 0) index = 10;
 
-  Array.from($boxofficeList.children).forEach($child => {
+  Array.from($boxofficeList.children).forEach(($child) => {
     $child.classList.toggle('active', +$child.id === index);
   });
 
