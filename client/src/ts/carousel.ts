@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import movieDetail from './detail';
 import { boxOfficeMovieList } from './store';
+import throttle from './utils/throttle';
 
 const todayYear = new Date().getFullYear();
 const todayMonth = new Date().getMonth() + 1;
@@ -27,7 +28,7 @@ let isClickable: boolean = true;
 
 const boxofficeRender = (movieList: []) => {
   $boxofficeList.innerHTML = movieList.map(({title, image, director, rank, link}: Boxoffice) => `
-    <li id="${rank}" ><img src="${image}" alt=""> 
+    <li id="${rank}" ><img src="${image}" alt=""><div class="movie-rank">${rank}</div>
     <div id="${rank}" class="movie-info"><p class="movie-title">${title}</p>
     <p class="movie-director">${director.substring(0, director.length - 1)}</p></div>
     <div class="movie-control"><button id="${rank}" class="movie-details" data-link="${link}">상세정보</button>
@@ -109,16 +110,16 @@ $boxofficeList.ontransitionend = () => {
   isClickable = true;
 
   if (currentSlide === boxOfficeMovieList.movieList.length + 1) {
-    delayTime = 0;
     currentSlide = 1;
+    delayTime = 0;
+    setCurrentActive();
     setBoxofficeList();
-    // delayTime = 500;
   }
   if (currentSlide === 0) {
-    delayTime = 0;
     currentSlide = boxOfficeMovieList.movieList.length;
+    delayTime = 0;
+    setCurrentActive();
     setBoxofficeList();
-    // delayTime = 500;
   }
   delayTime = 500;
 };
@@ -131,16 +132,6 @@ $nextBtn.onclick = () => {
     setCurrentActive();
     setBoxofficeList();
   }
-  // delayTime = 500;
-
-  // if (currentSlide === boxOfficeMovieList.movieList.length) {
-  //   delayTime = 0;
-  //   currentSlide = 0;
-  // }
-  // setCurrentActive();
-  // setBoxofficeList();
-  // boxofficeRender(boxOfficeMovieList.movieList);
-  // console.log(boxOfficeMovieList.movieList);
 };
 
 $prevBtn.onclick = () => {
@@ -151,15 +142,21 @@ $prevBtn.onclick = () => {
     setCurrentActive();
     setBoxofficeList();
   }
-  // delayTime = 500;
-
-  // if (currentSlide === -1) {
-  //   // delayTime = 0;
-  //   currentSlide = boxOfficeMovieList.movieList.length - 1;
-  // }
-  // setCurrentActive();
-  // setBoxofficeList();
-  // boxofficeRender(boxOfficeMovieList.movieList);
 };
+
+const $privateContainer = document.querySelector('.private-container') as HTMLElement;
+const $premiumImg = document.querySelector('.premium-img') as HTMLElement;
+const $premiumText = document.querySelector('.premium-text') as HTMLElement;
+
+window.onscroll = throttle (() => {
+  $privateContainer.style.display = window.pageYOffset >= 400 ? 'block' : 'none';
+  // $privateContainer.addEventListener('transitionend', () => {
+  //   $premiumImg.style.display = window.pageYOffset >= 400 ? 'block': 'none';
+  //   $premiumText.style.display = window.pageYOffset >= 400 ? 'block': 'none';
+  //   // $premiumText.style.display = 'block';
+  // });
+  $premiumImg.style.display = window.pageYOffset >= 400 ? 'block' : 'none';
+  $premiumText.style.display = window.pageYOffset >= 400 ? 'block' : 'none';
+}, 100);
 
 export default getMovieList;
