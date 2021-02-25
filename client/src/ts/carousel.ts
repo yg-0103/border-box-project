@@ -43,6 +43,7 @@ const boxofficeRender = (movieList: []) => {
   const $clonedSecondLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 1})`) as HTMLElement).cloneNode(true);
   const $clonedThirdLast = ($boxofficeList.querySelector(`li:nth-child(${movieList.length - 2})`) as HTMLElement).cloneNode(true);
 
+  // eslint-disable-next-line prefer-destructuring
   lastActivatedNode = $boxofficeList.children[0];
   lastActivatedNode.classList.add('active');
 
@@ -51,7 +52,7 @@ const boxofficeRender = (movieList: []) => {
   // console.log(boxOfficeMovieList.movieList);
 
   // movie detail part
-  document.querySelectorAll('.movie-details').forEach((button) => {
+  document.querySelectorAll('.movie-details').forEach(button => {
     button.addEventListener('click', (e: Event) => {
       const { link } = (e.currentTarget as HTMLButtonElement).dataset;
       movieDetail.show(link);
@@ -63,10 +64,13 @@ const boxofficeRender = (movieList: []) => {
   );
 
   // trailer part
-  document.querySelectorAll('.boxoffice_list li').forEach((movieItem) => {
+  document.querySelectorAll('.boxoffice_list li').forEach(movieItem => {
     movieItem.addEventListener('click', (e: Event) => {
-      if (e.target.matches('button')) return;
-      const title = e.currentTarget.querySelector('.movie-title b').textContent;
+      if ((e.target as HTMLElement).matches('button')) return;
+
+      const title = (movieItem.querySelector('.movie-title') as HTMLElement)
+        .textContent as string;
+
       trailer.show(title);
     });
   });
@@ -93,7 +97,7 @@ const setCurrentActive = () => {
   if (index === 11) index = 1;
   if (index === 0) index = 10;
 
-  Array.from($boxofficeList.children).forEach(($child) => {
+  Array.from($boxofficeList.children).forEach($child => {
     $child.classList.toggle('active', +$child.id === index);
   });
 

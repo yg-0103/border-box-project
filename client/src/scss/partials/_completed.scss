@@ -1,5 +1,5 @@
 .completed {
-  @include background-modal;
+  @include background-gradient;
   @include box-shadow(10px, 0.8);
   @include position-center(fixed);
   @include flex(center, center, column);
@@ -22,6 +22,7 @@
   &_reservation-number {
     @include font-content-smallest;
     margin-top: 10px;
+
     .reservation-number {
       @include font-heading-small;
       color: $color-darkgray;
@@ -42,6 +43,7 @@
   &_reservation-details {
     @include font-content-medium;
     margin-top: 10px;
+
     &_time {
       margin-top: 4px;
     }
@@ -66,19 +68,22 @@
     margin-top: 8px;
     padding: 4px 8px;
     color: red;
+
     &:active {
       transform: scale(0.95);
     }
   }
+
   &_close {
     @include position(absolute, $top: 8px, $right: 8px);
     @include button-clear;
+
     i {
       font-size: 36px;
     }
   }
 
-  ~ .completed_overlay {
+  ~.completed_overlay {
     @include position(fixed, 0, 0, 0, 0);
     @include background-overlay;
     z-index: 99;
@@ -88,7 +93,7 @@
   &.active {
     display: flex;
 
-    ~ .completed_overlay {
+    ~.completed_overlay {
       display: flex;
     }
   }
