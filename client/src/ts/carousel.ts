@@ -91,7 +91,10 @@ const boxofficeRender = (movieList: []) => {
   document.querySelectorAll('.boxoffice_list li').forEach(movieItem => {
     movieItem.addEventListener('click', (e: Event) => {
       if ((e.target as HTMLElement).matches('button')) return;
-      const title = (movieItem.querySelector('.movie-title b') as HTMLElement).textContent as string;
+
+      const title = (movieItem.querySelector('.movie-title') as HTMLElement)
+        .textContent as string;
+
       trailer.show(title);
     });
   });
