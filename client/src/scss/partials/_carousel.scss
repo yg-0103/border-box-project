@@ -74,9 +74,14 @@
       @include font-heading-large;
       color: $color-white;
       position: absolute;
-      top: 8px;
-      left: 12px;
+      top: 0px;
+      left: 0px;
       text-shadow: 2px 4px 2px $color-darkgray;
+      width: 100%;
+      padding: 10px;
+      height: 150px;
+      background: url('../img/bg-main-movie-rank.png') no-repeat 0 0;
+
     }
 
     .movie-info {
@@ -110,11 +115,12 @@
 
       .movie-details,
       .booking-btn {
-        padding: 8px 12px;
+        padding: 8px 15px;
         margin: 0 5px;
         border: 1px solid $color-white;
         color: $color-white;
-        background-color: $color-darkgray;
+        background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
+
         outline: none;
 
         &:hover {
@@ -126,7 +132,8 @@
 
       .booking-btn {
         border: 1px solid $color-white;
-        background-color: $color-primary;
+        background: linear-gradient(to bottom, #8e2de2, #4a00e0);
+
       }
     }
   }
