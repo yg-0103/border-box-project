@@ -6,6 +6,7 @@
   opacity: 0;
   z-index: -1000;
   transition: 0.3s;
+  backdrop-filter: blur(3px);
 
   &.active {
     opacity: 1;
@@ -21,8 +22,8 @@
     align-items: center;
     text-align: center;
     border-radius: 10px;
-
     color: $color-darkgray;
+    border: 10px double $color-black;
 
     th {
       padding: 10px;

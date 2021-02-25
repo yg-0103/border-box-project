@@ -1,7 +1,7 @@
 const axios = require('axios');
 const isSameTitle = require('./isSameTitle');
 
-const KOBIS_KEY = '1d8cffa34f04481050971e0ddcbebe2b';
+const KOBIS_KEY = '4b79868ea241601a6848419eebc90f94';
 const KOBIS_URL = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${KOBIS_KEY}&targetDt=`;
 const KOBIS_MOVIE_INFO_URL = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=${KOBIS_KEY}&movieCd=`;
 const NAVER_URL = `https://openapi.naver.com/v1/search/movie.json?query=`;

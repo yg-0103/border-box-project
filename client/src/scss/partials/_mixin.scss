@@ -80,11 +80,13 @@
 }
 
 // layout
-@mixin position($position,
+@mixin position(
+  $position,
   $top: null,
   $right: null,
   $bottom: null,
-  $left: null) {
+  $left: null
+) {
   position: $position;
   top: $top;
   right: $right;
@@ -123,6 +125,10 @@
   box-shadow: 0 3px $blur rgba($color: #000000, $alpha: $alpha);
 }
 
+@mixin border-double($width: 10px, $color: $color-black) {
+  border: $width double $color;
+}
+
 @mixin background-primary {
   background-color: $color-primary;
 }
@@ -141,14 +147,17 @@
 
 @mixin background-overlay {
   background-color: rgba($color: #000000, $alpha: 0.8);
+  backdrop-filter: blur(5px);
 }
 
 @mixin background-gradient {
   background: rgb(255, 255, 255);
-  background: linear-gradient(90deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(233, 233, 233, 1) 25%,
-      rgba(228, 226, 226, 1) 50%,
-      rgba(213, 213, 213, 1) 100%,
-      rgba(217, 216, 216, 0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(233, 233, 233, 1) 25%,
+    rgba(228, 226, 226, 1) 50%,
+    rgba(213, 213, 213, 1) 100%,
+    rgba(217, 216, 216, 0) 100%
+  );
 }

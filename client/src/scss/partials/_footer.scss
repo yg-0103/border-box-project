@@ -1,13 +1,13 @@
 .footer {
   @include background-black;
-  height: 220px;
+  height: 280px;
   opacity: 0.95;
   color: $color-white;
   padding: 15px;
 
   .footer_logo {
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 50px;
     text-align: center;
 
     img {
