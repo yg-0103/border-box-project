@@ -13,13 +13,16 @@
   background-color: $color-black;
   opacity: 0.95;
   height: 470px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .boxoffice_carousel {
     position: relative;
     height: 100%;
     width: 1484px;
     overflow: hidden;
-    margin: 0 auto;
     transform: scale(0.8);
     z-index: 999;
   }

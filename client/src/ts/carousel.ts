@@ -87,8 +87,9 @@ const boxofficeRender = (movieList: []) => {
   // trailer part
   document.querySelectorAll('.boxoffice_list li').forEach((movieItem) => {
     movieItem.addEventListener('click', (e: Event) => {
-      if (e.target.matches('button')) return;
-      const title = e.currentTarget.querySelector('.movie-title b').textContent;
+      if ((e.target as HTMLElement).matches('button')) return;
+      const title = (movieItem.querySelector('.movie-title') as HTMLElement)
+        .textContent as string;
       trailer.show(title);
     });
   });

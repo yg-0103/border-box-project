@@ -7,6 +7,15 @@
   z-index: 100;
   display: none;
 
+  &_spinner {
+    @include position-center(absolute);
+    font-size: 100px;
+  }
+
+  iframe {
+    width: 800px;
+    height: 500px;
+  }
   ~ .trailer_overlay {
     @include position(fixed, 0, 0, 0, 0);
     @include background-overlay;
