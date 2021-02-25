@@ -5,25 +5,25 @@
   @include flex(center, center, column);
   border-radius: 10px;
   text-align: center;
-  padding: 30px 0 15px;
-  width: 480px;
+  padding: 20px 0 10px;
+  width: 440px;
   z-index: 100;
   display: none;
 
   &_movie-title {
-    @include font-heading-large;
+    @include font-heading-medium;
     letter-spacing: 2px;
-    padding: 12px 0 8px;
-    width: 320px;
-    border-top: 3px solid $color-black;
-    border-bottom: 3px solid $color-black;
+    padding: 8px 0 4px;
+    width: 280px;
+    border-top: 2px solid $color-black;
+    border-bottom: 2px solid $color-black;
   }
 
   &_reservation-number {
-    @include font-content-medium;
-    margin-top: 14px;
+    @include font-content-small;
+    margin-top: 10px;
     .reservation-number {
-      @include font-heading-medium;
+      @include font-heading-small;
       color: $color-darkgray;
       margin-top: 2px;
       display: block;
@@ -32,36 +32,36 @@
 
   &_image {
     @include box-shadow;
-    margin-top: 12px;
-    width: 200px;
-    height: 295px;
+    margin-top: 8px;
+    width: 180px;
+    height: 270px;
   }
 
   &_reservation-details {
     @include font-content-medium;
     margin-top: 10px;
     &_time {
-      margin-top: 6px;
+      margin-top: 4px;
     }
   }
 
   &_qrcode {
     @include font-heading-small;
     @include flex(center, center, column);
-    margin-top: 16px;
+    margin-top: 12px;
     color: $color-darkgray;
 
     &_image {
       width: 100px;
       height: 100px;
-      margin-top: 4px;
+      margin-top: 2px;
     }
   }
 
   &_cancel {
-    @include font-heading-small;
+    @include font-heading-smallest;
     @include button-clear;
-    margin-top: 16px;
+    margin-top: 8px;
     padding: 4px 8px;
     color: red;
     &:active {
