@@ -142,3 +142,13 @@
 @mixin background-overlay {
   background-color: rgba($color: #000000, $alpha: 0.8);
 }
+
+@mixin background-gradient {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(233, 233, 233, 1) 25%,
+      rgba(228, 226, 226, 1) 50%,
+      rgba(213, 213, 213, 1) 100%,
+      rgba(217, 216, 216, 0) 100%);
+}

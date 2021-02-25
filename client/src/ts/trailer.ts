@@ -1,3 +1,5 @@
+declare let gapi: any;
+
 const trailer = (() => {
   const API_KEY = 'AIzaSyDY5xWukKRJb3ijn5wv0WumkzaWAzwHWik';
 
@@ -22,7 +24,7 @@ const trailer = (() => {
 
     console.log(youtubeUrl);
     // cross origin error
-    document.querySelector('.trailer video').src = youtubeUrl;
+    (document.querySelector('.trailer video') as HTMLVideoElement).src = youtubeUrl;
   };
 
   return {
