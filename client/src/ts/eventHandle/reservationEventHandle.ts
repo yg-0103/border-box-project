@@ -12,6 +12,7 @@ const $btnPrev = document.querySelector('.btn-prev') as HTMLButtonElement;
 const $radioSection = document.querySelector('.radio-section') as HTMLElement;
 const $reserveBtnGroup = document.querySelector('.btn-group') as HTMLElement;
 const $calendarContainer = document.querySelector('.main-container') as HTMLElement;
+const $reserveContainer = document.querySelector('.reservation-container') as HTMLElement;
 
 export const setBtnDisplay = (btnPrev: string, btnNext: string): void => {
   $btnNext.style.display = btnNext;
@@ -80,9 +81,15 @@ export default () => {
       (document.querySelector('.completed') as HTMLElement).classList.add('active');
     }
 
-    (document.querySelector('.reservation-container') as HTMLElement).classList.remove('active');
+    $reserveContainer.classList.remove('active');
     (document.querySelector('.reservation-completed') as HTMLButtonElement).disabled = true;
 
     findCheckedEl();
+  });
+
+  $reserveContainer.addEventListener('click', e => {
+    const eventTarget = e.target as HTMLElement;
+
+    if (eventTarget === $reserveContainer) $reserveContainer.classList.remove('active');
   });
 };

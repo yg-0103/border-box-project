@@ -1,14 +1,18 @@
 import axios from 'axios';
 import { ReserveData } from '../interface/ReserveData';
 
-export const getReserveInfo = async (reserveId: string) => {
-  try {
-    const reserveInfo = await axios.get(`/reserve/${reserveId}`);
+export const getReserve = async (callback:((reserveInfo: ReserveData[]) => void)) => {
+  const { data: reserveInfo } = await axios.get('reserve');
+  reserveInfo.sort((info1: ReserveData, info2: ReserveData) => {
+    if (info1.reserveId > info2.reserveId) {
+      return 1;
+    } if (info1.reserveId < info2.reserveId) {
+      return -1;
+    }
+    return 0;
+  });
 
-    return reserveInfo;
-  } catch (e) {
-    throw new Error('failed get reserve info');
-  }
+  callback(reserveInfo);
 };
 
 export const postReserveInfo = async (reserveData: ReserveData) => {

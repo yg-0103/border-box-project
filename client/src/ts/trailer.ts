@@ -30,6 +30,7 @@ const trailer = (() => {
     ) as HTMLVideoElement).src = youtubeUrl;
 
     $trailerSpinner.style.display = 'none';
+
   };
 
   return {
