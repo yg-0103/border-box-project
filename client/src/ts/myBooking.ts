@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getReserveItem } from './ajax/ajaxReserveInfo';
 import renderCompleted from './completed';
 
 const myBooking = () => {
@@ -41,19 +41,6 @@ const myBooking = () => {
     clearInput();
   };
 
-  const getReserveData = async () => {
-    try {
-      const response = await axios.get(
-        `/reserve/${$myBookingInput.value.toUpperCase()}`
-      );
-      const reserveData = await response.data;
-
-      return reserveData;
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   // Event Listeners
   $btnMyBooking.addEventListener('click', openMyBooking);
 
@@ -63,14 +50,15 @@ const myBooking = () => {
     '.myBooking_overlay'
   ) as HTMLElement).addEventListener('click', closeMybooking);
 
-  $myBookingForm.addEventListener('submit', async (e) => {
+  $myBookingForm.addEventListener('submit', async (e: Event) => {
+    const value = $myBookingInput.value.toUpperCase();
     e.preventDefault();
 
-    if (!/\d{8}[A-C|a-c]/.test($myBookingInput.value)) {
+    if (!/\d{8}[A-C]/.test(value)) {
       return showInvalid('예약 번호의 형식에 맞지 않습니다. (예: 20201225A)');
     }
 
-    const reserveData = await getReserveData();
+    const reserveData = await getReserveItem(value);
     if (!reserveData) {
       return showInvalid('해당 예약 번호에 대한 정보가 없습니다.');
     }
@@ -78,5 +66,4 @@ const myBooking = () => {
     closeMybooking();
   });
 };
-
 export default myBooking;

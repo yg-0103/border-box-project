@@ -16,6 +16,20 @@ export const getReserve = async (callback:((reserveInfo: ReserveData[]) => void)
   callback(reserveInfo);
 };
 
+export const getReserveItem = async (reserveId: string) => {
+  try {
+    const response = await axios.get(
+      `/reserve/${reserveId}`
+    );
+
+    const reserveData = await response.data;
+
+    return reserveData;
+  } catch (e) {
+    throw new Error('failed get reverseItem');
+  }
+};
+
 export const postReserveInfo = async (reserveData: ReserveData) => {
   try {
     const { data: reserveInfo } = await axios.post('/reserve', {
