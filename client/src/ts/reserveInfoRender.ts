@@ -3,7 +3,8 @@ import { ReserveData } from './interface/ReserveData';
 const $userReserveContainer = document.querySelector('.user-reserve-list') as HTMLElement;
 
 const reserveInfoRender = (reserveInfo: ReserveData[]) => {
-  $userReserveContainer.innerHTML = reserveInfo.length ? `
+  $userReserveContainer.innerHTML = reserveInfo.length
+    ? `
   <tr>
     <th></th>
     <th>제목</th>
@@ -21,7 +22,8 @@ const reserveInfoRender = (reserveInfo: ReserveData[]) => {
   </tr>
   <button class="user-reserve-close-btn"><i class="bx bx-x"></i></button>
   `).join('')}`
-    : '예약 정보가 없습니다.';
+    : `<p>예약 정보가 없습니다.</p>  
+      <button class="user-reserve-close-btn"><i class="bx bx-x"></i></button>`;
 };
 
 export default reserveInfoRender;

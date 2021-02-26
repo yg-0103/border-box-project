@@ -10,6 +10,7 @@ export const calendarRender = (): void => {
   changeCalendarHeaderTitle();
 
   const sundays: number[] = findSundays();
+
   $calenderContainer.innerHTML = state.prevMonthDays
     .map(day => `<button id="${day}" style="color: #aaa; opacity: 0; position: relative; z-index: -10;">${day}</button>`)
     .join('')

@@ -12,9 +12,7 @@ let reserveInformation = [];
 
 app.get('/movielist/:today', async (req, res) => {
   console.log(req.params);
-  const { movieNameAndRank, boxOfficeMovie } = await apis.getBoxOfficeMovies(
-    req.params.today
-  );
+  const { movieNameAndRank, boxOfficeMovie } = await apis.getBoxOfficeMovies(req.params.today);
 
   movieList = boxOfficeMovie.map((movie, i) => ({
     ...movie,
@@ -29,15 +27,12 @@ app.get('/reserve', (req, res) => {
 });
 
 app.get('/reserve/:id', (req, res) => {
-  const reserve = reserveInformation.find(
-    ({ reserveId }) => req.params.id === reserveId
-  );
+  const reserve = reserveInformation.find(({ reserveId }) => req.params.id === reserveId);
 
   res.send(reserve);
 });
 
 app.post('/reserve', (req, res) => {
-  console.log(req.body);
   reserveInformation = [...reserveInformation, req.body];
 
   res.send(reserveInformation);
@@ -45,9 +40,7 @@ app.post('/reserve', (req, res) => {
 
 app.delete('/reserve/:id', (req, res) => {
   const id = req.params.id;
-  reserveInformation = reserveInformation.filter(
-    ({ reserveId }) => reserveId !== id
-  );
+  reserveInformation = reserveInformation.filter(({ reserveId }) => reserveId !== id);
 
   res.send(reserveInformation);
 });
