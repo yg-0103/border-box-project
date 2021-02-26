@@ -62,7 +62,7 @@ const movieTrailer = () => {
   };
 
   // Event Listners
-  $movieItems.forEach((movieItem) => {
+  $movieItems.forEach(movieItem => {
     movieItem.addEventListener('click', (e: Event) => {
       showTrailer(e);
     });
