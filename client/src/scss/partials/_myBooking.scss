@@ -7,8 +7,7 @@
   width: 360px;
   text-align: center;
   overflow: hidden;
-  z-index: 100;
-  display: none;
+  @include transition-opacity-start;
 
   &_heading {
     @include font-heading-medium;
@@ -75,15 +74,14 @@
   ~ .myBooking_overlay {
     @include position(fixed, 0, 0, 0, 0);
     @include background-overlay;
-    display: none;
-    z-index: 99;
+    @include transition-opacity-start-overlay;
   }
 
   &.active {
-    display: block;
+    @include transition-opacity-end;
 
     ~ .myBooking_overlay {
-      display: block;
+      @include transition-opacity-end-overlay;
     }
   }
 }

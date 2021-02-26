@@ -83,9 +83,6 @@ export default () => {
       setReserveInfo();
       postReserveInfo(reserveData);
       renderCompleted(reserveData);
-
-      (document.querySelector('.completed') as HTMLElement)
-        .classList.add('active');
     }
 
     $reserveContainer.classList.remove('active');
