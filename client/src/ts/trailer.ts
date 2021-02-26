@@ -18,7 +18,7 @@ const movieTrailer = () => {
     '.boxoffice_list li'
   ) as NodeListOf<HTMLElement>;
 
-  // Youtube API
+  // Functions
   const setTrailerUrl = (movieTitle: string) => {
     gapi.load('client:auth2', async () => {
       gapi.client.setApiKey(API_KEY);
@@ -40,7 +40,6 @@ const movieTrailer = () => {
     });
   };
 
-  // Functions
   const showTrailer = (e: Event) => {
     if ((e.target as HTMLElement).matches('button')) return;
 

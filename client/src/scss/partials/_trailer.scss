@@ -5,8 +5,7 @@
   padding: 10px;
   border: 10px solid $color-white;
   border-radius: 10px;
-  z-index: 100;
-  display: none;
+  @include transition-opacity-start;
 
   &_spinner {
     @include position-center(absolute);
@@ -19,15 +18,14 @@
   ~ .trailer_overlay {
     @include position(fixed, 0, 0, 0, 0);
     @include background-overlay;
-    display: none;
-    z-index: 99;
+    @include transition-opacity-start-overlay;
   }
 
   &.active {
-    display: block;
+    @include transition-opacity-end;
 
     ~ .trailer_overlay {
-      display: block;
+      @include transition-opacity-end-overlay;
     }
   }
 }
