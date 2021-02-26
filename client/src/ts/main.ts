@@ -10,6 +10,7 @@ reserveInfoEventHandle();
 scrollGoToTop();
 getMovieList();
 movieListEventHandle();
-changeRadioDisabled();
+// eslint-disable-next-line no-unused-expressions
+changeRadioDisabled;
 reservation();
 myBooking();
