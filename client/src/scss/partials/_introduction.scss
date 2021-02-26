@@ -11,8 +11,8 @@
   &::before {
     content: '';
     @include position(absolute, 0, 0, 0, 0);
-    background-color: #111111ec;
-    backdrop-filter: blur(2px);
+    background-color: #111111da;
+    backdrop-filter: blur(4px);
 
     //z-index: -5;
   }

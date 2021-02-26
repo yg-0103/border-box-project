@@ -88,12 +88,14 @@
       position: absolute;
       bottom: 0;
       left: 0;
+      text-align: center;
       background: #161616cc;
       line-height: 1.2;
     }
 
     .movie-title {
       @include font-heading-smallest;
+
     }
 
     .movie-director {

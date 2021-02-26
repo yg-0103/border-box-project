@@ -57,7 +57,7 @@ export default () => {
 
     state.today = `${state.year}-${state.month + 1}-${eventTarget.id}`;
 
-    changeRadioDisabled(+eventTarget.id);
+    changeRadioDisabled(+eventTarget.id, state.month);
     calendarRender();
   });
 

@@ -37,7 +37,7 @@ export default () => {
 
     setBtnDisplay('none', 'block');
     initializeDate();
-    changeRadioDisabled(state.date);
+    changeRadioDisabled(state.date, state.month);
     calendarRender();
     setReserveMenu(selectedMovie);
 
