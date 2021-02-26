@@ -1,7 +1,7 @@
 declare let gapi: any;
 
 const movieTrailer = () => {
-  const API_KEY = 'AIzaSyCRRHIXNBZh3_7z4svlxtKFEKSGFCbeVDA';
+  const API_KEY = 'AIzaSyCdNyCTaol-msx5nTO7ZyOTMXUcJOresIs';
 
   // DOM Elements
   const $trailer = document.querySelector('.trailer') as HTMLElement;
