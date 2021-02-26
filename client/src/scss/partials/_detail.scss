@@ -6,8 +6,7 @@
   width: 1000px;
   height: 85%;
   border-radius: 10px;
-  z-index: 100;
-  display: none;
+  @include transition-opacity-start;
 
   &_spinner {
     @include position-center(absolute);
@@ -21,15 +20,14 @@
   ~ .detail_overlay {
     @include position(fixed, 0, 0, 0, 0);
     @include background-overlay;
-    display: none;
-    z-index: 99;
+    @include transition-opacity-start-overlay;
   }
 
   &.active {
-    display: block;
+    @include transition-opacity-end;
 
     ~ .detail_overlay {
-      display: block;
+      @include transition-opacity-end-overlay;
     }
   }
 }

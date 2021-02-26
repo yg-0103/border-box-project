@@ -16,9 +16,9 @@ const movieDetail = () => {
 
   // Functions
   const showDetail = (e: Event) => {
+    $detail.classList.add('active');
     const link = (e.currentTarget as HTMLButtonElement).dataset.link as string;
     $detailIframe.src = link;
-    $detail.classList.add('active');
     setTimeout(() => {
       $detailSpinner.style.display = 'none';
     }, 500);

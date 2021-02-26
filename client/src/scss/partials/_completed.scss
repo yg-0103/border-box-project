@@ -8,8 +8,7 @@
   text-align: center;
   padding: 20px 0 10px;
   width: 440px;
-  z-index: 100;
-  display: none;
+  @include transition-opacity-start;
 
   &_movie-title {
     @include font-heading-medium;
@@ -87,15 +86,14 @@
   ~ .completed_overlay {
     @include position(fixed, 0, 0, 0, 0);
     @include background-overlay;
-    z-index: 99;
-    display: none;
+    @include transition-opacity-start-overlay;
   }
 
   &.active {
-    display: flex;
+    @include transition-opacity-end;
 
     ~ .completed_overlay {
-      display: flex;
+      @include transition-opacity-end-overlay;
     }
   }
 }

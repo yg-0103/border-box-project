@@ -65,15 +65,14 @@ const myBooking = () => {
 
   $myBookingForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     if (!/\d{8}[A-C|a-c]/.test($myBookingInput.value)) {
-      showInvalid('예약 번호의 형식에 맞지 않습니다. (예: 20201225A)');
-      return;
+      return showInvalid('예약 번호의 형식에 맞지 않습니다. (예: 20201225A)');
     }
 
     const reserveData = await getReserveData();
     if (!reserveData) {
-      showInvalid('해당 예약 번호에 대한 정보가 없습니다.');
-      return;
+      return showInvalid('해당 예약 번호에 대한 정보가 없습니다.');
     }
     renderCompleted(reserveData);
     closeMybooking();
