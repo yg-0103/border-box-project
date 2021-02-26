@@ -1,11 +1,8 @@
 .spinner {
   @include position(absolute, $top: 50%, $left: 50%);
+  @include font(50px, 700);
   transform: translate3d(-50%, -50%, 0);
 
-  img {
-    width: 150px;
-    height: 150px;
-  }
 }
 
 .boxoffice-container {
@@ -85,15 +82,14 @@
     }
 
     .movie-info {
+      @include flex($justify: center, $direction: column);
       height: 70px;
       width: 100%;
       position: absolute;
       bottom: 0;
       left: 0;
       background: #161616cc;
-      padding-top: 13px;
-      padding-left: 5px;
-      @include flex($justify: center, $direction: column);
+      line-height: 1.2;
     }
 
     .movie-title {
@@ -120,12 +116,13 @@
         border: 1px solid $color-white;
         color: $color-white;
         background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
-
+        transition: 0.2s;
         outline: none;
 
         &:hover {
           // background-color: #8e2de2;
           background-color: #4a00e0;
+          transform: scale(1.2);
           font-weight: 700;
         }
       }

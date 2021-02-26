@@ -2,18 +2,22 @@ import axios from 'axios';
 import { ReserveData } from '../interface/ReserveData';
 
 // eslint-disable-next-line no-unused-vars
-export const getReserve = async (callback:((reserveInfo: ReserveData[]) => void)) => {
-  const { data: reserveInfo } = await axios.get('reserve');
+export const getReserveInfo = async (callback:((reserveInfo: ReserveData[]) => void)) => {
+  try {
+    const { data: reserveInfo } = await axios.get('reserve');
 
-  reserveInfo.sort((info1: ReserveData, info2: ReserveData) => {
-    if (info1.reserveId > info2.reserveId) return 1;
+    reserveInfo.sort((info1: ReserveData, info2: ReserveData) => {
+      if (info1.reserveId > info2.reserveId) return 1;
 
-    if (info1.reserveId < info2.reserveId) return -1;
+      if (info1.reserveId < info2.reserveId) return -1;
 
-    return 0;
-  });
+      return 0;
+    });
 
-  callback(reserveInfo);
+    callback(reserveInfo);
+  } catch (e) {
+    throw new Error('failed get reserve info');
+  }
 };
 
 export const postReserveInfo = async (reserveData: ReserveData) => {
@@ -24,7 +28,7 @@ export const postReserveInfo = async (reserveData: ReserveData) => {
 
     return reserveInfo.map(({ reserveId }: { reserveId: string }) => reserveId);
   } catch (e) {
-    throw new Error('failed post reserveInfo');
+    throw new Error('failed post reserve info');
   }
 };
 

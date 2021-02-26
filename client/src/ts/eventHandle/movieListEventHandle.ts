@@ -1,19 +1,19 @@
 import { changeRadioDisabled } from '../ajax/changeRadioDisabled';
 import { calendarRender } from '../calendar/calendarRender';
 import { initializeDate } from '../utils/initializeDate';
-import { boxOfficeMovieList } from '../store';
+import { boxOfficeMovieList, state } from '../store';
 import { MovieList } from '../interface/MovieList';
 import { setBtnDisplay } from './reservationEventHandle';
 
 const $movieList = document.querySelector('.boxoffice_list') as HTMLElement;
 
-const findSelectedTarget = (id: string): MovieList => {
+const findSelectedMovie = (id: string): MovieList => {
   const target = boxOfficeMovieList.movieList.find(({ rank }) => rank === id);
 
   return (target as unknown) as MovieList;
 };
 
-const setReserveModal = (target: MovieList) => {
+const setReserveMenu = (target: MovieList) => {
   (document.querySelector('.img-container img') as HTMLImageElement)
     .src = target.image;
 
@@ -32,13 +32,14 @@ export default () => {
     const eventTarget = e.target as HTMLElement;
 
     if (!eventTarget.matches('.booking-btn')) return;
-    const target = findSelectedTarget(eventTarget.id);
+
+    const selectedMovie = findSelectedMovie(eventTarget.id);
 
     setBtnDisplay('none', 'block');
     initializeDate();
-    changeRadioDisabled();
+    changeRadioDisabled(state.date);
     calendarRender();
-    setReserveModal(target);
+    setReserveMenu(selectedMovie);
 
     document.querySelector('.reservation-container')
       ?.classList.add('active');
