@@ -2,7 +2,6 @@
 
 ## 🎥 Demo Video
 
-
 [Click to watch!](https://www.youtube.com/watch?v=cGKVqW4W96I&feature=youtu.be)
 
 ## 🎬 TEAM
